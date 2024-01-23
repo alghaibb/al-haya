@@ -1,8 +1,8 @@
 import User from '../../models/User';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
+import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
 
 class ValidationError extends Error {
@@ -70,11 +70,8 @@ const userResolvers = {
 
         await user.save();
 
-        const token = jwt.sign(
-          { userId: user._id, email: user.email },
-          process.env.JWT_SECRET as string,
-          { expiresIn: '1h' },
-        )
+        // Create a token using the signToken function
+        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
 
         return { user, token };
       } catch (error: any) {
@@ -113,12 +110,8 @@ const userResolvers = {
           throw new Error('Invalid password');
         }
 
-        // Generate token on successful login
-        const token = jwt.sign(
-          { userId: user._id, email: user.email },
-          process.env.JWT_SECRET as string,
-          { expiresIn: '24h' }
-        );
+        // Create a token using the signToken function
+        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
 
         return { user, token };
       } catch (error) {
