@@ -13,6 +13,7 @@ export const REGISTER_USER = gql`
       user {
         _id
         fullName
+        email
       }
     }
   }
@@ -29,6 +30,7 @@ export const LOGIN_USER = gql`
       user {
         _id
         fullName
+        email
       }
     }
   }
