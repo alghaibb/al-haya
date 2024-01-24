@@ -35,9 +35,24 @@
   margin-top: 0.5rem;
 }
 
+.form-item {
+  position: relative;
+}
+
+.form-item button {
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .signupForm {
     max-width: 400px;
     padding: 0 20px;
+    margin-top: 2.5rem;
   }
 }

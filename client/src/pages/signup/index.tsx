@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-expect-error
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
@@ -21,10 +21,12 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 
-import AuthService from "../../utils/auth";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 import "./form.style.css";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const formSchema = z
   .object({
@@ -51,7 +53,14 @@ const formSchema = z
 type FormDataType = z.infer<typeof formSchema>;
 
 const Signup = () => {
-  const [register, { data, loading, error }] = useMutation(REGISTER_USER);
+  // useState hooks
+  const [register, { loading, error }] = useMutation(REGISTER_USER);
+  const [showLoader, setShowLoader] = useState(false);
+  // State for toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,6 +73,7 @@ const Signup = () => {
   });
 
   const handleFormSubmit = async (formData: FormDataType) => {
+    setShowLoader(true);
     try {
       const res = await register({
         variables: {
@@ -74,13 +84,48 @@ const Signup = () => {
         },
       });
 
-      if (res.data.register.token) {
-        AuthService.login(res.data.login.token);
+      if (res.data && res.data.register && res.data.register.token) {
+        // Delay the toast message for 3 seconds
+        setTimeout(() => {
+          // Show a success toast message
+          toast({
+            title: "Registration Successful",
+            description: "You have been successfully registered!",
+          });
+        }, 2000);
+
+        // Redirect the user to the login page or perform other actions here
+      } else {
+        // Handle the case where the response structure is unexpected
+        console.error("Unexpected response structure:", res.data);
+        // Show a single error toast message for unexpected errors
+        toast({
+          title: "Registration Failed",
+          description:
+            "An error occurred during registration. Please try again.",
+          variant: "destructive",
+        });
       }
     } catch (error) {
       console.error("Registration error:", error);
+      // Show a single error toast message for network or server errors
+      toast({
+        title: "Registration Failed",
+        description: "An error occurred during registration. Please try again.",
+        variant: "destructive",
+      });
     }
+
+    // Delay for 3 seconds before deactivating the loader and showing the form again and delay toast message for 3 seconds
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
   };
+
+  // Toggle functions
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const toggleConfirmPasswordVisibility = () =>
+    setShowConfirmPassword(!showConfirmPassword);
 
   return (
     <div className="signupContainer">
@@ -97,13 +142,18 @@ const Signup = () => {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input
+                      {...field}
+                      type="name"
+                      disabled={loading || showLoader}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               );
             }}
           ></FormField>
+
           <FormField
             control={form.control}
             name="email"
@@ -112,7 +162,11 @@ const Signup = () => {
                 <FormItem>
                   <FormLabel>Your email</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input
+                      {...field}
+                      type="email"
+                      disabled={loading || showLoader}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -124,39 +178,67 @@ const Signup = () => {
             name="password"
             render={({ field }) => {
               return (
-                <FormItem>
+                <FormItem className="form-item">
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" />
+                    <Input
+                      {...field}
+                      type={showPassword ? "text" : "password"}
+                      disabled={loading || showLoader}
+                    />
                   </FormControl>
+                  <button onClick={togglePasswordVisibility} type="button">
+                    {/* Replace with an eye/eye-off icon */}
+                    {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                  </button>
                   <FormMessage />
                 </FormItem>
               );
             }}
           ></FormField>
+
           <FormField
             control={form.control}
             name="confirmPassword"
             render={({ field }) => {
               return (
-                <FormItem>
+                <FormItem className="form-item">
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" />
+                    <Input
+                      {...field}
+                      type={showConfirmPassword ? "text" : "password"}
+                      disabled={loading || showLoader}
+                    />
                   </FormControl>
+                  <button
+                    onClick={toggleConfirmPasswordVisibility}
+                    type="button"
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOutlined />
+                    ) : (
+                      <EyeInvisibleOutlined />
+                    )}
+                  </button>
                   <FormMessage />
                 </FormItem>
               );
             }}
           ></FormField>
-          <Button type="submit" className="signupBtn" disabled={loading}>
-            Sign Up
+
+          <Button
+            type="submit"
+            className="signupBtn"
+            disabled={loading || showLoader}
+          >
+            {showLoader ? <LoadingSpinner /> : "Sign Up"}
           </Button>
 
           {error && <p className="error-text">{error.message}</p>}
 
           <p>
-            Already signed up with us?
+            Already have an account?
             <Link to="/login">
               <span>Login</span>
             </Link>
