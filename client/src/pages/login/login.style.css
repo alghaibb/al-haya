@@ -1,0 +1,62 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loginBtn {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.loginContainer p {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.loginContainer span {
+  margin-left: 0.4rem;
+  text-decoration: underline;
+}
+
+.form-item {
+  position: relative;
+}
+
+.form-item button {
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  outline: none;
+}
+
+.btn-hidden {
+  color: #a1a1aa;
+}
+
+.btn-visible {
+  color: #27272a;
+}
+
+@media screen and (max-width: 768px) {
+  .loginForm {
+    max-width: 400px;
+    padding: 0 20px;
+    margin-top: 2.5rem;
+  }
+}
