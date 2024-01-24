@@ -119,6 +119,18 @@ const userResolvers = {
       }
     },
 
+    // Logout a user
+    logout: async (_: any, { token }: { token: String }) => {
+      try {
+        console.log(`User with token ${token} logged out successfully`);
+
+        return 'User logged out successfully';
+      } catch (error) {
+        console.error('Error logging out user:', error);
+        throw new Error('Failed to logout user');
+      }
+    },
+
     // Update a user
     updateUser: async (_: any, args: { _id: string; fullName?: string; password?: string }) => {
       try {

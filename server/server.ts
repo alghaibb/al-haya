@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import cors from 'cors';
 
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4'
@@ -14,6 +15,16 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 const app = express();
 
+const corsOptions = {
+  origin: process.env.ORIGIN || 'http://localhost:3000',
+  credentials: true,
+}
+
+app.use(cors(corsOptions));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -21,9 +32,6 @@ const server = new ApolloServer({
 
 const startApolloServer = async () => {
   await server.start();
-
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
 
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware,

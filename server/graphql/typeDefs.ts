@@ -34,6 +34,7 @@ const typeDefs = gql`
   type Mutation {
     register(registerInput: RegisterInput): AuthPayload!
     login(loginInput: LoginInput): AuthPayload!
+    logout(token: String!): String
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
   }
