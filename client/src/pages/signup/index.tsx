@@ -25,7 +25,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
-import "./form.style.css";
+import "./signup.style.css";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 const formSchema = z
@@ -97,8 +97,14 @@ const Signup = () => {
           // Show a success toast message
           toast({
             title: "Registration Successful",
-            description: "You have been successfully registered!",
+            description:
+              "You have been successfully registered, redirecting you to the login page...",
           });
+
+          // Redirect the user to the login page after 2 seconds
+          setTimeout(() => {
+            window.location.href = "/login";
+          }, 2000);
         }, 2000);
 
         // Redirect the user to the login page or perform other actions here
