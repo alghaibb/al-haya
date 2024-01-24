@@ -54,7 +54,7 @@ type FormDataType = z.infer<typeof formSchema>;
 
 const Signup = () => {
   // useState hooks
-  const [register, { loading, error }] = useMutation(REGISTER_USER);
+  const [register, { loading }] = useMutation(REGISTER_USER);
   const [showLoader, setShowLoader] = useState(false);
   // State for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -72,7 +72,14 @@ const Signup = () => {
     },
   });
 
-  const handleFormSubmit = async (formData: FormDataType) => {
+  const handleFormSubmit = async (
+    formData: FormDataType,
+    e?: React.BaseSyntheticEvent
+  ) => {
+    if (e) {
+      e.preventDefault();
+    }
+
     setShowLoader(true);
     try {
       const res = await register({
@@ -114,12 +121,12 @@ const Signup = () => {
         description: "An error occurred during registration. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setTimeout(() => {
+        form.reset();
+        setShowLoader(false);
+      }, 2000);
     }
-
-    // Delay for 3 seconds before deactivating the loader and showing the form again and delay toast message for 3 seconds
-    setTimeout(() => {
-      setShowLoader(false);
-    }, 2000);
   };
 
   // Toggle functions
@@ -131,7 +138,9 @@ const Signup = () => {
     <div className="signupContainer">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(handleFormSubmit)}
+          onSubmit={form.handleSubmit((formData, e) =>
+            handleFormSubmit(formData, e)
+          )}
           className="signupForm"
         >
           <FormField
@@ -187,7 +196,11 @@ const Signup = () => {
                       disabled={loading || showLoader}
                     />
                   </FormControl>
-                  <button onClick={togglePasswordVisibility} type="button">
+                  <button
+                    onClick={togglePasswordVisibility}
+                    type="button"
+                    className={showPassword ? "btn-visible" : "btn-hidden"}
+                  >
                     {/* Replace with an eye/eye-off icon */}
                     {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                   </button>
@@ -214,6 +227,9 @@ const Signup = () => {
                   <button
                     onClick={toggleConfirmPasswordVisibility}
                     type="button"
+                    className={
+                      showConfirmPassword ? "btn-visible" : "btn-hidden"
+                    }
                   >
                     {showConfirmPassword ? (
                       <EyeOutlined />
@@ -234,8 +250,6 @@ const Signup = () => {
           >
             {showLoader ? <LoadingSpinner /> : "Sign Up"}
           </Button>
-
-          {error && <p className="error-text">{error.message}</p>}
 
           <p>
             Already have an account?

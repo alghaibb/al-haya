@@ -47,6 +47,16 @@
   background: none;
   border: none;
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  outline: none;
+}
+
+.btn-hidden {
+  color: #a1a1aa;
+}
+
+.btn-visible {
+  color: #27272a;
 }
 
 @media screen and (max-width: 768px) {
