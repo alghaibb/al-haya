@@ -10,12 +10,17 @@ import Signup from "./pages/signup/index.tsx";
 import Login from "./pages/login/index.tsx";
 
 import "./styles/globals.css";
+import Home from "./pages/home/index.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: "/signup",
         element: <Signup />,
