@@ -9,14 +9,6 @@ const typeDefs = gql`
     password: String!
   }
 
-  type Product {
-    _id: ID!
-    name: String!
-    description: String
-    price: Float!
-    image: String!
-  }
-
   type AuthPayload {
     token: String!
     user: User!
@@ -37,8 +29,6 @@ const typeDefs = gql`
   type Query {
     getUsers: [User]
     getUserById(id: ID!): User
-    getProducts: [Product]
-    getProductById(id: ID!): Product
   }
 
   type Mutation {
@@ -47,8 +37,6 @@ const typeDefs = gql`
     logout(token: String!): String
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
-    addProduct(name: String!, description: String, price: Float!, image: String!): Product
-    deleteProduct(id: ID!): String
   }
 `;
 
