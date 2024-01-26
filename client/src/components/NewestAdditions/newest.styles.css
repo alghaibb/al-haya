@@ -1,0 +1,60 @@
+.newestAdditions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.newestAdditions-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  @apply text-zinc-900;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.newestAdditions-seeAll {
+  font-size: 1.2rem;
+  font-weight: 700;
+  @apply text-zinc-900;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.newestAdditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.newestAdditions-card {
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.newestAdditions-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.newestAdditions-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.newestAdditions-info {
+  text-align: center;
+  padding: 10px;
+}
+
+.newestAdditions-product-title {
+  margin: 10px 0 5px;
+}
+
+.newestAdditions-product-price {
+  @apply text-zinc-900;
+  font-weight: bold;
+}
