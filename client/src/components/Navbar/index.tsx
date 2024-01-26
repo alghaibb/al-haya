@@ -12,7 +12,7 @@ import MobileNav from "./MobileNav";
 
 // Array of links to be rendered in the navbar
 const navLinks = [
-  { name: "New", path: "/new" },
+  { name: "New Arrivals", path: "/new-arrivals" },
   { name: "Men", path: "/men" },
   { name: "Women", path: "/women" },
   { name: "Accessories", path: "/accessories" },
