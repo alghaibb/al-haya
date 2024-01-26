@@ -27,6 +27,12 @@ export default {
       }
     },
     {
+      name: 'category',
+      title: 'Product Category',
+      type: 'reference',
+      to: { type: 'category' }
+    },
+    {
       name: 'image',
       title: 'Product Image',
       type: 'image',
