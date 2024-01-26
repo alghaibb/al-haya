@@ -33,6 +33,11 @@ const Home = () => {
           <div className="heroBannerSlogan">
             <h1>Elegance in Modesty</h1>
             <p>Explore the Beauty of Islamic Attire</p>
+            <Link to="/new-arrivals">
+              <Button className="shopNowBtn" size="sm">
+                Shop Now
+              </Button>
+            </Link>
           </div>
           <img
             src={heroBanner.imageUrl}
@@ -40,7 +45,7 @@ const Home = () => {
             className="heroBanner"
           />
           <Link to="/new-arrivals">
-            <Button className="shopNowBtn" size="sm">
+            <Button className="mobileShopNowBtn" size="sm">
               Shop Now
             </Button>
           </Link>
