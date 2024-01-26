@@ -23,7 +23,12 @@ export default {
       title: 'Product Slug',
       type: 'slug',
       options: {
-        source: 'title'
+        source: 'title',
+        maxLength: 96,
+        slugify: (input: string) => input
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .slice(0, 200)
       }
     },
     {
@@ -33,12 +38,13 @@ export default {
       to: { type: 'category' }
     },
     {
-      name: 'image',
-      title: 'Product Image',
-      type: 'image',
+      name: 'images',
+      title: 'Product Images',
+      type: 'array',
+      of: [{ type: 'image' }],
       options: {
-        hotspot: true
-      }
-    }
+        hotspot: true,
+      },
+    },
   ]
 }
