@@ -1,0 +1,4 @@
+.homeContainer {
+  padding: 1.5rem;
+  @apply sm:pb-8 lg:pb-12;
+}

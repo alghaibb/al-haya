@@ -9,8 +9,16 @@ export default {
       type: 'string'
     },
     {
-      name: 'image',
-      title: 'Hero Banner Image',
+      name: 'primaryHeroImage',
+      title: 'Primary Hero Image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'secondaryHeroImage',
+      title: 'Secondary Hero Image',
       type: 'image',
       options: {
         hotspot: true

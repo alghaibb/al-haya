@@ -30,7 +30,7 @@
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
     @apply bg-zinc-100;
-    z-index: 10;
+    z-index: 1000;
   }
 
   .menu.open {
