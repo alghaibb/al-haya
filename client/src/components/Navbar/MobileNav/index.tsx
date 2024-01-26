@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Squash as Hamburger } from "hamburger-react";
 import { CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
 import { MdOutlineMail } from "react-icons/md";
-import { TfiEmail } from "react-icons/tfi";
 
 import "./mobileNav.style.css";
 
@@ -37,9 +36,9 @@ const MobileNav = () => {
 
   const mobileNavLinks = [
     { name: "New Arrivals", path: "/new-arrivals" },
-    { name: "Men", path: "/men" },
-    { name: "Women", path: "/women" },
-    { name: "Accessories", path: "/accessories" },
+    { name: "Men", path: "/category/men" },
+    { name: "Women", path: "/category/women" },
+    { name: "Accessories", path: "/category/accessories" },
   ];
 
   return (

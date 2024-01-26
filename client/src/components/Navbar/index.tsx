@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
 import Logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import Auth from "@/utils/auth";
@@ -13,9 +12,9 @@ import MobileNav from "./MobileNav";
 // Array of links to be rendered in the navbar
 const navLinks = [
   { name: "New Arrivals", path: "/new-arrivals" },
-  { name: "Men", path: "/men" },
-  { name: "Women", path: "/women" },
-  { name: "Accessories", path: "/accessories" },
+  { name: "Men", path: "/category/men" },
+  { name: "Women", path: "/category/women" },
+  { name: "Accessories", path: "/category/accessories" },
 ];
 
 const Navbar = () => {
