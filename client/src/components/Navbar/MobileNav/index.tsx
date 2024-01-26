@@ -36,7 +36,7 @@ const MobileNav = () => {
   });
 
   const mobileNavLinks = [
-    { name: "New", path: "/new" },
+    { name: "New Arrivals", path: "/new-arrivals" },
     { name: "Men", path: "/men" },
     { name: "Women", path: "/women" },
     { name: "Accessories", path: "/accessories" },

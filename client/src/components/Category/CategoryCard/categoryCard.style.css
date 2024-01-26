@@ -1,0 +1,23 @@
+.categoryCard {
+  overflow: hidden;
+  position: relative;
+}
+
+.categoryImage {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.categoryTitle {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  @apply text-zinc-100;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+}
+
+.categoryCard:hover .categoryImage {
+  transform: scale(1.1);
+}
