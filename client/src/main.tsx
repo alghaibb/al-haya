@@ -6,11 +6,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.tsx";
-import Signup from "./pages/signup/index.tsx";
-import Login from "./pages/login/index.tsx";
+import Signup from "./pages/signup/signup.tsx";
+import Login from "./pages/login/login.tsx";
 
 import "./styles/globals.css";
-import Home from "./pages/home/index.tsx";
+import Home from "./pages/home/home.tsx";
 
 const router = createBrowserRouter([
   {
