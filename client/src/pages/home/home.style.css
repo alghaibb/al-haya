@@ -6,17 +6,12 @@
 }
 
 .shopNowBtn {
-  width: 200px;
-  margin-top: 0.5rem;
-}
-
-.mobileShopNowBtn {
-  display: none;
+  width: 1000px;
 }
 
 .heroBannerContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -26,15 +21,14 @@
   padding: 0 20px;
 }
 .heroBanner {
-  width: 80%;
+  width: 100%;
   object-fit: contain;
 }
 
 .heroBannerSlogan {
   display: flex;
-  text-align: left;
+  text-align: center;
   flex-direction: column;
-  flex: 1;
   @apply text-zinc-900;
 }
 
@@ -65,9 +59,14 @@
   margin-top: 16px;
   margin-left: 20px;
   padding-top: 16px;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
+  .shopNowBtn {
+    width: 350px;
+  }
+
   .heroBannerContainer {
     flex-direction: column;
   }
@@ -87,15 +86,5 @@
 
   .shopByCategoryText {
     font-size: 1.5rem;
-  }
-
-  .shopNowBtn {
-    display: none;
-  }
-
-  .mobileShopNowBtn {
-    display: block;
-    width: 340px;
-    margin-top: 1rem;
   }
 }
