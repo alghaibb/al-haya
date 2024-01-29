@@ -1,77 +1,79 @@
-.newestAdditions-container {
+.productLoader {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.noProducts {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.newestAdditions-title {
+.category-title {
   font-size: 2.5rem;
   font-weight: 700;
   @apply text-zinc-900;
   text-align: left;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.newestAdditions-seeAll {
-  font-size: 1.2rem;
-  font-weight: 700;
-  @apply text-zinc-900;
-  margin-bottom: 30px;
-}
-
-.newestAdditions-grid {
+.category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-.newestAdditions-card {
+.category-card {
   overflow: hidden;
   position: relative;
   border-radius: 8px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.newestAdditions-card:hover {
+.category-card:hover {
   transform: scale(1.03);
 }
 
-.newestAdditions-image {
+.category-image {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 8px;
 }
 
-.newestAdditions-info {
+.category-info {
   text-align: center;
   padding: 10px;
 }
 
-.newestAdditions-product-title {
+.category-product-title {
   margin: 10px 0 5px;
 }
 
-.newestAdditions-product-price {
+.category-product-price {
   @apply text-zinc-900;
   font-weight: bold;
 }
 
-.seelAllBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 400px;
-  width: 100%;
-  margin-top: 1.5rem;
-}
-
 @media (max-width: 768px) {
-  .newestAdditions-title {
-    font-size: 2rem;
+  .category-title {
+    text-align: center;
+    font-size: 1.75rem;
   }
 
-  .seelAllBtn {
-    max-width: 100%;
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }

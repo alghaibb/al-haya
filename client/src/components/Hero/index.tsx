@@ -54,7 +54,9 @@ const Hero = () => {
             women
           </p>
           <Link to="/products">
-            <Button className="shopNowBtn">Shop Now</Button>
+            <Button size="sm" className="desktopShopNowBtn">
+              Shop Now
+            </Button>
           </Link>
         </div>
 
@@ -71,6 +73,12 @@ const Hero = () => {
             </div>
           )}
         </div>
+
+        <Link to="/products">
+          <Button size="sm" className="mobileShopNowBtn">
+            Shop Now
+          </Button>
+        </Link>
       </div>
     </section>
   );

@@ -36,9 +36,9 @@ const MobileNav = () => {
 
   const mobileNavLinks = [
     { name: "Shop", path: "/products" },
-    { name: "Men", path: "/men" },
-    { name: "Women", path: "/women" },
-    { name: "Accessories", path: "/accessories" },
+    { name: "Men", path: "/category/men" },
+    { name: "Women", path: "/category/women" },
+    { name: "Accessories", path: "/category/accessories" },
   ];
 
   return (

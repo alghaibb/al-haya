@@ -12,6 +12,7 @@ import Login from "./pages/login/login.tsx";
 import "./styles/globals.css";
 import Home from "./pages/home/home.tsx";
 import ProductPage from "./pages/product/product.tsx";
+import CategoryPage from "./pages/category/category.tsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:slug",
         element: <ProductPage />,
+      },
+      {
+        path: "/category/:category",
+        element: <CategoryPage />,
       },
     ],
   },

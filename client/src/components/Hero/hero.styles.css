@@ -73,9 +73,13 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.shopNowBtn {
+.desktopShopNowBtn {
   width: 100%;
   margin-top: 1.5rem;
+}
+
+.mobileShopNowBtn {
+  display: none;
 }
 
 /* Small media queries */
@@ -113,6 +117,21 @@
   .heroImage {
     left: 4rem;
     top: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sloganContainer h1 {
+    text-align: center;
+  }
+
+  .desktopShopNowBtn {
+    display: none;
+  }
+
+  .mobileShopNowBtn {
+    width: 260px;
+    margin-top: 3rem;
   }
 }
 
