@@ -73,12 +73,6 @@ const Hero = () => {
             </div>
           )}
         </div>
-
-        <Link to="/products">
-          <Button size="sm" className="mobileShopNowBtn">
-            Shop Now
-          </Button>
-        </Link>
       </div>
     </section>
   );

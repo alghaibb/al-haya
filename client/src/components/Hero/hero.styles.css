@@ -124,15 +124,6 @@
   .sloganContainer h1 {
     text-align: center;
   }
-
-  .desktopShopNowBtn {
-    display: none;
-  }
-
-  .mobileShopNowBtn {
-    width: 260px;
-    margin-top: 3rem;
-  }
 }
 
 /* Large media queries */
