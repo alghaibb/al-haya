@@ -12,7 +12,7 @@ const NewestAdditions = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const query = `*[_type == 'product'][0...5] | order(_createdAt desc) {
+      const query = `*[_type == 'product'][0...4] | order(_createdAt desc) {
         _id,
         price,
         title,
@@ -50,10 +50,12 @@ const NewestAdditions = () => {
             </Link>
           </div>
         ))}
-        <Link to="/products">
-          <Button className="w-full">See All</Button>
-        </Link>
       </div>
+      <Link to="/products">
+        <Button size="sm" className="seelAllBtn">
+          See All
+        </Button>
+      </Link>
     </div>
   );
 };
