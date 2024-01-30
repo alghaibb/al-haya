@@ -1,0 +1,35 @@
+.sheetContent {
+  width: 90vw;
+}
+
+.sheetDivContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.sheetDivInnerContainer {
+  flex: 1;
+  margin-top: 2rem;
+  overflow-y: auto;
+}
+
+.listContainer {
+  margin-top: -1.5rem;
+  margin-bottom: -1.5rem;
+  @apply divide-y divide-zinc-300;
+}
+
+.listContainer h1 {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .sheetContent {
+    max-width: 32rem;
+  }
+}
