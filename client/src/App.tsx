@@ -10,6 +10,7 @@ import { Outlet } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster";
 import Navbar from "./components/Navbar";
 import CartProvider from "./components/Providers/Cart";
+import ShoppingCartModal from "./components/ShoppingCartModal";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,6 +44,7 @@ function App() {
       <CartProvider>
         <main>
           <Navbar />
+          <ShoppingCartModal />
           <Outlet />
           <Toaster />
         </main>
