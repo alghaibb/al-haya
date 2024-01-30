@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster";
 import Navbar from "./components/Navbar";
-import Divider from "./components/Divider";
+import CartProvider from "./components/Providers/Cart";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,11 +40,13 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <main>
-        <Navbar />
-        <Outlet />
-        <Toaster />
-      </main>
+      <CartProvider>
+        <main>
+          <Navbar />
+          <Outlet />
+          <Toaster />
+        </main>
+      </CartProvider>
     </ApolloProvider>
   );
 }
