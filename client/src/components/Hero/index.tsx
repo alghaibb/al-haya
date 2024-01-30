@@ -4,8 +4,6 @@ import client, { urlFor } from "../../sanityClient";
 import LoadingSpinner from "../LoadingSpinner";
 
 import "./hero.styles.css";
-import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
 
 interface HeroBannerImageAsset {
   _ref: string;
@@ -53,11 +51,6 @@ const Hero = () => {
             Explore our finest collections of islamic attires for both men &
             women
           </p>
-          <Link to="/products">
-            <Button size="sm" className="desktopShopNowBtn">
-              Shop Now
-            </Button>
-          </Link>
         </div>
 
         <div className="heroImageContainer">
