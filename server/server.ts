@@ -12,7 +12,7 @@ import db from './config/connection'
 
 dotenv.config();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {

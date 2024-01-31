@@ -2,9 +2,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import dotenv from 'dotenv'
 
-dotenv.config()
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,7 +17,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/graphql': {
-        target: process.env.VITE_SERVER_URL || 'https://al-haya.onrender.com',
+        target: 'https://al-haya.onrender.com',
         changeOrigin: true,
         secure: false,
       },
