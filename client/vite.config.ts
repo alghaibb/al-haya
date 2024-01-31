@@ -16,7 +16,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/graphql': {
-        target: (import.meta as any).env.VITE_SERVER_URL || 'http://localhost:3001',
+        target: (import.meta as any).env.VITE_SERVER_URL || 'https://al-haya.onrender.com',
         changeOrigin: true,
         secure: false,
       },
