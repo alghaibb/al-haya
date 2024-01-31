@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 
 const corsOptions = {
-  origin: process.env.ORIGIN || "https://al-haya.vercel.app"
+  origin: process.env.ORIGIN || "https://al-haya.vercel.app",
   credentials: true,
 }
 
