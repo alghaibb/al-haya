@@ -28,8 +28,110 @@
   padding-bottom: 1.5rem;
 }
 
+.listItemContainer {
+  display: flex;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.listItem {
+  width: 6rem;
+  height: 6rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  @apply border border-zinc-400/60;
+}
+
+.cartProductDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.cartProductDetails {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  @apply text-zinc-900;
+}
+
+.cartProductDescription {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  @apply text-zinc-600 line-clamp-2;
+}
+
+.qtyRemoveBtnContainer {
+  display: flex;
+  flex: 1;
+  align-items: end;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.qtyRemoveBtnContainer p {
+  @apply text-zinc-600;
+}
+
+.removeBtnContainer {
+  display: flex;
+}
+
+.removeBtn {
+  font-weight: 500;
+  @apply text-primary;
+  transition: color 0.2s ease-in-out;
+}
+
+.removeBtn:hover {
+  @apply text-primary/80;
+}
+
+.cartFooterContainer {
+  @apply border-t border-zinc-400/60;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.cartTotal {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  @apply text-zinc-900;
+}
+
+.btnContainer {
+  margin-top: 2rem;
+  @apply space-y-2;
+}
+
+.viewCartBtn {
+  width: 100%;
+}
+
+.checkoutBtn {
+  width: 100%;
+}
+
 @media (min-width: 640px) {
   .sheetContent {
     max-width: 32rem;
+  }
+
+  .cartFooterContainer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
