@@ -10,6 +10,8 @@ import ImageGallery from "@/components/ImageGallery";
 import AddToCart from "@/components/AddToCartBtn";
 import CheckoutNow from "@/components/CheckoutBtn";
 
+export const dynamic = "force-dynamic";
+
 const ProductPage = () => {
   const [productData, setProductData] = useState<fullProduct | null>(null);
   const [loading, setLoading] = useState(true);
