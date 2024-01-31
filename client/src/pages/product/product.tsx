@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import "./product.styles.css";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ImageGallery from "@/components/ImageGallery";
+import AddToCart from "@/components/AddToCartBtn";
 
 const ProductPage = () => {
   const [productData, setProductData] = useState<fullProduct | null>(null);
@@ -68,9 +69,14 @@ const ProductPage = () => {
           <div className="shippingInfo">Ships in 1-2 business days</div>
           <div className="returnPolicy">30-day return policy</div>
           <div className="productActions">
-            <Button size="lg" className="addToCartBtn">
-              Add To Cart
-            </Button>
+            <AddToCart
+              key={productData._id}
+              currency="AUD"
+              description={productData.description}
+              image={productData.images}
+              name={productData.title}
+              price={productData.price}
+            />
             <Button variant="outline" size="lg" className="addToWishlistBtn">
               Add To Wishlist
             </Button>
