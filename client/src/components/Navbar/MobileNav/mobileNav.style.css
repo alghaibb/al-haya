@@ -49,6 +49,11 @@
     width: 100%;
     padding: 1.5rem 0.5rem;
     text-transform: uppercase;
+    @apply border-b border-zinc-400/60;
+  }
+
+  .menuItem:last-child {
+    @apply border-b-0;
   }
 
   .menuFooterWrapper {
@@ -67,6 +72,19 @@
     gap: 1rem;
     justify-content: center;
     @apply border-t border-zinc-300;
+  }
+
+  .menuItems,
+  .menuFooter {
+    opacity: 0;
+    transform: translateX(-40%);
+    transition: opacity 0.9s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  .menuItems.open,
+  .menuFooter.open {
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .socialIcons {
