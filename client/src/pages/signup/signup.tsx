@@ -102,7 +102,7 @@ const Signup = () => {
 
           // Redirect the user to the login page after 2 seconds
           setTimeout(() => {
-            window.location.href = "/login";
+            window.location.href = "login";
           }, 2000);
         }, 2000);
 
