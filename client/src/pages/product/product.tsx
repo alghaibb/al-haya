@@ -8,10 +8,12 @@ import "./product.styles.css";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ImageGallery from "@/components/ImageGallery";
 import AddToCart from "@/components/AddToCartBtn";
+import CheckoutNow from "@/components/CheckoutBtn";
 
 const ProductPage = () => {
   const [productData, setProductData] = useState<fullProduct | null>(null);
   const [loading, setLoading] = useState(true);
+
   const { slug } = useParams<{ slug: string }>();
 
   useEffect(() => {
@@ -25,7 +27,8 @@ const ProductPage = () => {
             title,
             description,
             "slug": slug.current,
-            "categoryName": category->title
+            "categoryName": category->title,
+            price_id
           }`;
           const data = await client.fetch(query, { slug });
           setProductData(data);
@@ -51,6 +54,7 @@ const ProductPage = () => {
   if (!productData) {
     return <div className="productNotFound">Product not found</div>;
   }
+
   return (
     <div className="productContainer">
       <div className="productCard">
@@ -76,6 +80,7 @@ const ProductPage = () => {
               image={productData.images}
               name={productData.title}
               price={productData.price}
+              price_id={productData.price_id}
             />
             <Button variant="outline" size="lg" className="addToWishlistBtn">
               Add To Wishlist
@@ -86,9 +91,15 @@ const ProductPage = () => {
             <span className="orText">OR</span>
             <hr className="dividerLine" />
           </div>
-          <Button size="lg" className="checkoutNowBtn">
-            Checkout Now
-          </Button>
+          <CheckoutNow
+            currency="AUD"
+            description={productData.description}
+            image={productData.images}
+            name={productData.title}
+            price={productData.price}
+            price_id={productData.price_id}
+            key={productData._id}
+          />
         </div>
       </div>
     </div>

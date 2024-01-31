@@ -69,7 +69,7 @@
 .qtyRemoveBtnContainer {
   display: flex;
   flex: 1;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   font-size: 0.875rem;
   font-weight: 500;

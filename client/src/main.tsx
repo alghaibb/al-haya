@@ -13,6 +13,7 @@ import "./styles/globals.css";
 import Home from "./pages/home/home.tsx";
 import ProductPage from "./pages/product/product.tsx";
 import CategoryPage from "./pages/category/category.tsx";
+import Cart from "./pages/cart/cart.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/category/:category",
         element: <CategoryPage />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
