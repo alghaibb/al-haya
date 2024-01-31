@@ -6,6 +6,8 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import "./category.styles.css";
 import { simpleProduct } from "@/interface";
 
+export const dynamic = "force-dynamic";
+
 const CategoryPage = () => {
   const [categoryData, setCategoryData] = useState<simpleProduct[]>([]);
   const [loading, setLoading] = useState(true);
