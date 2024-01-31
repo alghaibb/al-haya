@@ -1,19 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "../ui/button";
 import { useShoppingCart } from "use-shopping-cart";
-import { useToast } from "@/components/ui/use-toast";
 import { urlFor } from "../../sanityClient";
+import { ProductCart } from "../AddToCartBtn";
 
-export interface ProductCart {
-  name: string;
-  description: string;
-  price: number;
-  currency: string;
-  image: any;
-  price_id: string;
-}
-
-const AddToCart = ({
+const CheckoutNow = ({
   name,
   description,
   price,
@@ -21,8 +12,11 @@ const AddToCart = ({
   image,
   price_id,
 }: ProductCart) => {
-  const { toast } = useToast();
-  const { addItem } = useShoppingCart();
+  const { checkoutSingleItem } = useShoppingCart();
+
+  function buyNow(priceId: string) {
+    checkoutSingleItem(priceId);
+  }
 
   // Helper function to get the URL for a single image
   const getImageUrl = (imageData: any) => {
@@ -56,20 +50,14 @@ const AddToCart = ({
   return (
     <Button
       size="lg"
-      className="addToCartBtn"
+      className="checkoutNowBtn"
       onClick={() => {
-        addItem(product);
-        toast({
-          title: `${name} has added to your cart`,
-          description:
-            "You can view your cart by clicking the cart icon in the top right corner",
-          duration: 2000,
-        });
+        buyNow(product.price_id);
       }}
     >
-      Add To Cart
+      Checkout Now
     </Button>
   );
 };
 
-export default AddToCart;
+export default CheckoutNow;

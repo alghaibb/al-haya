@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Sheet,
   SheetContent,
@@ -18,9 +19,22 @@ const ShoppingCartModal = () => {
     cartDetails,
     removeItem,
     totalPrice,
+    redirectToCheckout,
   } = useShoppingCart();
 
   const isCartDetailsDefined = cartDetails !== undefined;
+
+  async function handleCheckout() {
+    const response = await redirectToCheckout();
+
+    try {
+      if (response.error) {
+        console.log(response.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -95,14 +109,21 @@ const ShoppingCartModal = () => {
             </div>
             <div className="btnContainer">
               <Link to="/cart">
-                <Button className="viewCartBtn">View Your Cart</Button>
+                <Button
+                  className="viewCartBtn"
+                  onClick={() => handleCartClick()}
+                >
+                  View Your Cart
+                </Button>
               </Link>
               <div className="orDivider">
                 <hr className="dividerLine" />
                 <span className="orText">OR</span>
                 <hr className="dividerLine" />
               </div>
-              <Button className="checkoutBtn">Checkout</Button>
+              <Button className="checkoutBtn" onClick={() => handleCheckout()}>
+                Checkout
+              </Button>
             </div>
           </div>
         </div>
