@@ -1,0 +1,58 @@
+.successContainer {
+  height: 100vh;
+}
+
+.success {
+  margin-top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkMark {
+  width: 4rem;
+  height: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  @apply text-emerald-600;
+}
+
+.successTextContainer {
+  text-align: center;
+}
+
+.successTextContainer h3 {
+  font-size: 2rem;
+  @apply text-zinc-900;
+  font-weight: 600;
+  text-align: center;
+}
+
+.successTextContainer p {
+  @apply text-zinc-600;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.continueShoppingBtn {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .success {
+    max-width: 90vw;
+  }
+
+  .successTextContainer h3 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .continueShoppingBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
