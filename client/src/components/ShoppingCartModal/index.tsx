@@ -9,9 +9,12 @@ import {
 import "./cartmodal.styles.css";
 import { useShoppingCart } from "use-shopping-cart";
 import { Button } from "../ui/button";
+import { useToast } from "../ui/use-toast";
 import { Link } from "react-router-dom";
 
 const ShoppingCartModal = () => {
+  const { toast } = useToast();
+
   const {
     cartCount,
     shouldDisplayCart,
@@ -25,14 +28,22 @@ const ShoppingCartModal = () => {
   const isCartDetailsDefined = cartDetails !== undefined;
 
   async function handleCheckout() {
-    const response = await redirectToCheckout();
+    if (cartCount === 0) {
+      toast({
+        title: "Your cart is empty",
+        description: "Please add some items to your cart before checking out.",
+        variant: "destructive",
+      });
+    } else {
+      const response = await redirectToCheckout();
 
-    try {
-      if (response.error) {
-        console.log(response.error);
+      try {
+        if (response.error) {
+          console.log(response.error);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   }
 
