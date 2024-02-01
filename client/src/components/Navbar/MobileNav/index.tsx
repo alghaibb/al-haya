@@ -70,7 +70,7 @@ const MobileNav = () => {
         <div className={`menuFooterWrapper ${isOpen ? "open" : ""}`}>
           <div className={`menuFooter ${isOpen ? "open" : ""}`}>
             {/* Contact container */}
-            <Link to="/contact-us">
+            <Link to="/contact-us" onClick={() => setIsOpen(false)}>
               <div className="contactUs">
                 <MdOutlineMail className="contactIcon" size={24} />
                 <p className="contactText">Contact Us</p>
