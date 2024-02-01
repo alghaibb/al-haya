@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-top-section">
         <div className="footer-top-items">
           <h1>About Al Haya</h1>
-          <span>
+          <span className="about-description">
             Al Haya celebrates the essence of modesty through elegant fashion.
             We offer a curated collection of Islamic wear for men and women,
             designed to honor tradition with a modern touch. Each piece is
