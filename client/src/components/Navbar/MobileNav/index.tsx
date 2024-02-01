@@ -70,10 +70,12 @@ const MobileNav = () => {
         <div className={`menuFooterWrapper ${isOpen ? "open" : ""}`}>
           <div className={`menuFooter ${isOpen ? "open" : ""}`}>
             {/* Contact container */}
-            <div className="contactUs">
-              <MdOutlineMail className="contactIcon" size={24} />
-              <p className="contactText">Contact Us</p>
-            </div>
+            <Link to="/contact-us">
+              <div className="contactUs">
+                <MdOutlineMail className="contactIcon" size={24} />
+                <p className="contactText">Contact Us</p>
+              </div>
+            </Link>
 
             {/* Shopping bag */}
             <button onClick={() => cartClick()}>
