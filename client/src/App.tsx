@@ -11,6 +11,8 @@ import { Toaster } from "./components/ui/toaster";
 import Navbar from "./components/Navbar";
 import CartProvider from "./components/Providers/Cart";
 import ShoppingCartModal from "./components/ShoppingCartModal";
+import Footer from "./components/Footer";
+import Divider from "./components/Divider";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -42,12 +44,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <CartProvider>
-        <main>
-          <Navbar />
+        <Navbar />
+        <main className="flex flex-col min-h-screen">
           <ShoppingCartModal />
           <Outlet />
           <Toaster />
         </main>
+        <Divider />
+        <Footer />
       </CartProvider>
     </ApolloProvider>
   );
