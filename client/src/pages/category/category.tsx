@@ -25,7 +25,6 @@ const CategoryPage = () => {
             "slug": slug.current
           }`;
           const data: simpleProduct[] = await client.fetch(query, { category });
-          console.log("Fetched data:", data);
           setCategoryData(data);
           setLoading(false);
         } catch (error) {
