@@ -26,6 +26,18 @@ const typeDefs = gql`
     password: String!
   }
 
+  input ContactInput {
+    fullName: String!
+    email: String!
+    subject: String!
+    message: String!
+  }
+
+  type ContactResponse {
+    success: Boolean!
+    message: String!
+  }
+
   type Query {
     getUsers: [User]
     getUserById(id: ID!): User
@@ -37,6 +49,10 @@ const typeDefs = gql`
     logout(token: String!): String
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
+  }
+
+  extend type Mutation {
+    sendContactMessage(contactInput: ContactInput!): ContactResponse!
   }
 `;
 
