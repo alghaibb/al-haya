@@ -49,6 +49,15 @@
   font-weight: 500;
   @apply text-zinc-800;
 }
+
+.subscribeBtn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.input-field.error {
+  @apply bg-red-300;
+}
 /* FOOTER TOP SECTION END */
 
 /* FOOTER BOTTOM SECTION START */

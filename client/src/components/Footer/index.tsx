@@ -1,11 +1,71 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@apollo/client";
+import * as z from "zod";
+import { SEND_EMAIL } from "../../utils/mutations/sendEmail";
 
 import Logo from "../../assets/logo.svg";
 
-import "./footer.styles.css";
 import { Input } from "../ui/input";
+import { useToast } from "../ui/use-toast";
+import { Button } from "../ui/button";
+
+import LoadingSpinner from "../LoadingSpinner";
+
+import "./footer.styles.css";
+
+interface Subscription {
+  email: string;
+}
+
+const subscriptionSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+});
 
 const Footer = () => {
+  const [loading, setLoading] = useState(false);
+  const [subscribeToNewsletter] = useMutation(SEND_EMAIL);
+
+  const { toast } = useToast();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Subscription>({
+    resolver: zodResolver(subscriptionSchema),
+  });
+
+  const onSubscribe = async (data: Subscription) => {
+    setLoading(true);
+    try {
+      const res = await subscribeToNewsletter({
+        variables: { email: data.email },
+      });
+      if (res.data.subscribe) {
+        setTimeout(() => {
+          setLoading(false);
+          toast({
+            title: "Subscription Successful",
+            description: "You have successfully subscribed to our newsletter",
+          });
+          reset();
+        }, 2000);
+      }
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: "Subscription Failed",
+        description: "An error occurred while subscribing to our newsletter",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-top-section">
@@ -53,7 +113,17 @@ const Footer = () => {
         <div className="footer-top-items">
           <h1>Subscribe to Our Newsletter</h1>
           <span>Get the latest updates on new products and upcoming sales</span>
-          <Input placeholder="Your email address" />
+          <form onSubmit={handleSubmit(onSubscribe)}>
+            <Input
+              placeholder="Your email address"
+              {...register("email")}
+              className={`input-field ${errors.email ? "error" : ""}`}
+              disabled={loading}
+            />
+            <Button type="submit" disabled={loading} className="subscribeBtn">
+              {loading ? <LoadingSpinner /> : "Subscribe"}
+            </Button>
+          </form>
         </div>
       </div>
       <div className="footer-bottom-section">
