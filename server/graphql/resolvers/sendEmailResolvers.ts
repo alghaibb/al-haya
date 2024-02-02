@@ -19,7 +19,7 @@ const sendEmailResolvers = {
         to: email,
         subject: 'Subscription Confirmation',
         html: `
-        <div style="font-family: Arial, sans-serif; color: #333; max-width: 768px; margin: auto; border: 1px solid #ddd; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600x; margin: auto; border: 1px solid #ddd; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
           <div style="text-align: center; margin-bottom: 20px;">
             <img src="https://drive.google.com/file/d/1JPtO8RvRRHCCv40xcCdWWSQi1mKaqc1y/view?usp=sharing" alt="Al Haya Logo" style="max-width: 100px;">
           </div>
