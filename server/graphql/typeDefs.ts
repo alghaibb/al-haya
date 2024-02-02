@@ -37,6 +37,7 @@ const typeDefs = gql`
     logout(token: String!): String
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
+    subscribeToNewsletter(email: String!): String
   }
 `;
 
