@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 const sendEmailResolvers = {
   Mutation: {
     // your existing mutation resolvers
-    subscribe: async (_: any, { email }: { email: string }) => {
+    subscribeToNewsletter: async (_: any, { email }: { email: string }) => {
       // Set up transporter
       const transporter = nodemailer.createTransport({
         service: 'gmail', // or your email service

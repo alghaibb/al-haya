@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const SEND_EMAIL = gql`
-  mutation Subscribe($email: String!) {
-    subscribe(email: $email)
+  mutation SubscribeToNewsletter($email: String!) {
+    subscribeToNewsletter(email: $email)
   }
 `;
