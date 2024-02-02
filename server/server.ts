@@ -21,9 +21,10 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 const server = new ApolloServer({
   typeDefs,
