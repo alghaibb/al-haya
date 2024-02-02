@@ -46,7 +46,7 @@ const Footer = () => {
       const res = await subscribeToNewsletter({
         variables: { email: data.email },
       });
-      if (res.data.subscribe) {
+      if (res.data.subscribeToNewsletter) {
         setTimeout(() => {
           setLoading(false);
           toast({
