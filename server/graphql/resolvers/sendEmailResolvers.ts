@@ -19,11 +19,11 @@ const sendEmailResolvers = {
         to: email,
         subject: 'Subscription Confirmation',
         html: `
-          <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="email__container">
-            <div style="text-align: center; margin-bottom: 20px;" class="shop__title">
+          <div style="font-family: Arial, sans-serif; color: #18181b; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="email__container">
+            <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #18181b;" class="shop__title">
               <h1 style="font-weight: bold; color: #18181b; font-size: 32px;">Al Haya</h1>
             </div>
-            <div style="border-bottom: 2px solid #007bff; margin-bottom: 20px; padding-bottom: 10px;">
+            <div style="margin-bottom: 20px; padding-bottom: 10px;">
               <h1 style="color: #18181b; text-align: center;">Welcome to Our Newsletter!</h1>
             </div>
             <p style="color: #18181b; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">Thank you for subscribing to our newsletter. You'll now receive the latest updates on our products and services directly to your inbox.</p><br>
