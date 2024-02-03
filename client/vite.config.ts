@@ -16,7 +16,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/graphql': {
-        target: 'http://localhost:3001' || 'https://al-haya-server.onrender.com',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },

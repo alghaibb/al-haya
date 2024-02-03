@@ -29,7 +29,7 @@
     transform: translateX(-100%);
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
-    @apply bg-zinc-100;
+    background: white;
     z-index: 1000;
   }
 

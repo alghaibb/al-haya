@@ -93,15 +93,17 @@ const ProductPage = () => {
             <span className="orText">OR</span>
             <hr className="dividerLine" />
           </div>
-          <CheckoutNow
-            currency="AUD"
-            description={productData.description}
-            image={productData.images}
-            name={productData.title}
-            price={productData.price}
-            price_id={productData.price_id}
-            key={productData._id}
-          />
+          <div className="checkoutNowBtn">
+            <CheckoutNow
+              currency="AUD"
+              description={productData.description}
+              image={productData.images}
+              name={productData.title}
+              price={productData.price}
+              price_id={productData.price_id}
+              key={productData._id}
+            />
+          </div>
         </div>
       </div>
     </div>

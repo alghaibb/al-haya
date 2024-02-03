@@ -16,7 +16,7 @@ import Divider from "./components/Divider";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: "https://al-haya-server.onrender.com/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
