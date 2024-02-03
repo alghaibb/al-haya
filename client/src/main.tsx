@@ -13,6 +13,7 @@ import Cart from "./pages/cart/cart.tsx";
 import ErrorStripe from "./pages/stripe/error/error.tsx";
 import SuccessStripe from "./pages/stripe/success/success.tsx";
 import Contact from "./pages/contact/contact.tsx";
+import Verify from "./pages/verify/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <Contact />,
+      },
+      {
+        path: "/verify:token",
+        element: <Verify />,
       },
     ],
   },

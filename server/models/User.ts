@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import crypto from 'crypto';
 
 // Define the document schema
 const userSchema = new mongoose.Schema({
@@ -20,6 +21,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: 8,
+  },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+  },
+  verificationTokenExpires: {
+    type: Date,
+  },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordTokenExpires: {
+    type: Date,
   },
 });
 

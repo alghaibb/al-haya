@@ -97,7 +97,7 @@ const Signup = () => {
           toast({
             title: "Registration Successful",
             description:
-              "You have been successfully registered, redirecting you to the login page...",
+              "A verification email has been sent. Please check your email to verify your account.",
           });
 
           // Redirect the user to the login page after 2 seconds

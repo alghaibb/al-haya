@@ -19,6 +19,17 @@ export const REGISTER_USER = gql`
   }
 `;
 
+// Mutation to verify an account
+export const VERIFY_ACCOUNT = gql`
+  mutation verifyAccount($token: String!) {
+    verifyAccount(token: $token) {
+      _id
+      fullName
+      email
+    }
+  }
+`;
+
 // Mutation for user login
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {

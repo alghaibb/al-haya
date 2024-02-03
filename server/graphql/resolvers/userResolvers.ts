@@ -1,9 +1,12 @@
 import User from '../../models/User';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+import crypto from 'crypto';
 
 import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
+import { sendEmail } from '../../utils/emailService';
+import { generateVerificationToken } from '../../utils/tokenGenerator';
 
 class ValidationError extends Error {
   constructor(message: string) {
@@ -68,12 +71,45 @@ const userResolvers = {
           password,
         });
 
+        // Generate a verification token
+        const { token, expires } = generateVerificationToken();
+        user.verificationToken = token;
+        user.verificationTokenExpires = expires;
+
         await user.save();
 
-        // Create a token using the signToken function
-        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
+        // Send a verification email
+        const verificationUrl = process.env.CLIENT_VERIFY_URL;
+        const emailSubject = 'Verify your email address';
+        const emailHtml = `
+        <html>
+        <head>
+          <style>
+            @media (max-width: 768px) {
+              .verify-button {
+                padding: 10px 20px; /* Smaller padding on mobile */
+                font-size: 14px; /* Smaller font size on mobile */
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <p style="color: #F4F4F5; font-size: 16px; font-family: Arial, sans-serif; margin: 20px 0;">
+            Please click on the following link to verify your email address:
+          </p>
+          <a href="${verificationUrl}" class="verify-button" style="background-color: #18181B; color: #F4F4F5; padding: 15px 25px; text-decoration: none; border-radius: 5px; font-size: 18px; font-family: Arial, sans-serif; display: inline-block; margin: 20px 0;">
+            Verify Email
+          </a>
+        </body>
+        </html>
+        `;
 
-        return { user, token };
+        await sendEmail(user.email, emailSubject, emailHtml);
+
+        // Create a token using the signToken function
+        const authToken = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
+
+        return { user, token: authToken };
       } catch (error: any) {
         console.error('Error registering user:', error);
         throw new Error(`Failed to register user: ${error.message}`);
