@@ -1,7 +1,7 @@
+import { mergeResolvers } from "@graphql-tools/merge";
 import userResolvers from "./userResolvers";
 import sendEmailResolvers from "./sendEmailResolvers";
 
-export default {
-  ...userResolvers,
-  ...sendEmailResolvers,
-}
+const resolvers = mergeResolvers([userResolvers, sendEmailResolvers]);
+
+export default resolvers;
