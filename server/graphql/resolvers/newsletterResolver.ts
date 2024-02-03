@@ -26,7 +26,7 @@ const sendEmailResolvers = {
             <p style="font-size: 16px; line-height: 1.5;">Thank you for subscribing to our newsletter. You'll now receive the latest updates on our products and services directly to your inbox.</p>
             <p style="font-size: 16px; line-height: 1.5;">To ensure our emails always reach your inbox, please add our email address to your contacts.</p>
             <div style="margin-top: 20px; text-align: center;">
-              <a href="YOUR_WEBSITE_URL" style="display: inline-block; background-color: #007bff; color: #F4F4F5; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 16px;">Back to Al Haya</a>
+              <a href="https://al-haya-73td.vercel.app/" style="display: inline-block; background-color: #007bff; color: #F4F4F5; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 16px;">Back to Al Haya</a>
             </div>
             <footer style="margin-top: 30px; text-align: center;">
               <p style="font-size: 14px;">© Al Haya, All rights reserved.</p>
