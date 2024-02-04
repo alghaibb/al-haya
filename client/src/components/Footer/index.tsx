@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@apollo/client";
 import * as z from "zod";
-import { SEND_EMAIL } from "../../utils/mutations/sendEmail";
+import { SEND_EMAIL } from "../../utils/mutations/newsletterEmail";
 
 import Logo from "../../assets/logo.svg";
 
