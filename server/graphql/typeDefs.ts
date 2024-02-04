@@ -38,7 +38,6 @@ const typeDefs = gql`
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
     subscribeToNewsletter(email: String!): String
-    verifyEmail(token: String!): String
   }
 `;
 

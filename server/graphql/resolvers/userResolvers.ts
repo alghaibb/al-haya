@@ -1,11 +1,9 @@
 import User from '../../models/User';
 import bcrypt from 'bcrypt';
-import crypto from 'crypto';
 import mongoose from 'mongoose';
 
 import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
-import { sendVerificationEmail } from '../../utils/mailer';
 
 class ValidationError extends Error {
   constructor(message: string) {
@@ -64,57 +62,21 @@ const userResolvers = {
       }
 
       try {
-        // Generate a verification token
-        const verificationToken = crypto.randomBytes(32).toString('hex');
-
         const user = new User({
           fullName,
           email,
           password,
-          verificationToken,
-          isVerified: false,
         });
 
         await user.save();
 
-        // Send a verification email
-        await sendVerificationEmail(email, verificationToken);
-
         // Create a token using the signToken function
-        // const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
-        // return { user, token };
-
-        return {
-          message: "Registration successful. Please check your email to verify your account.", user: {
-            _id: user._id,
-            fullName: user.fullName,
-            email: user.email,
-            isVerified: user.isVerified,
-          }
-        };
+        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
+        
+        return { user, token };
       } catch (error: any) {
         console.error('Error registering user:', error);
         throw new Error(`Failed to register user: ${error.message}`);
-      }
-    },
-
-    // Verify a user's email
-    verifyEmail: async (_: any, { token }: { token: string }) => {
-      try {
-        const user = await User.findOne({ verificationToken: token });
-
-        if (!user) {
-          throw new Error('Verification token is invalid or has expired.');
-        }
-
-        user.isVerified = true;
-        user.verificationToken = undefined;
-        await user.save();
-
-        return 'Email verified successfully';
-      } catch (error) {
-        console.error('Error verifying email:', error);
-        throw new Error('Failed to verify email');
       }
     },
 
@@ -136,10 +98,6 @@ const userResolvers = {
 
         if (!user) {
           throw new Error('User not found');
-        }
-
-        if (!user.isVerified) {
-          throw new Error('Please verify your email before logging in.');
         }
 
         if (!user.password) {
