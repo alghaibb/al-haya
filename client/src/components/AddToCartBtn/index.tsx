@@ -60,9 +60,7 @@ const AddToCart = ({
       onClick={() => {
         addItem(product);
         toast({
-          title: `${name} has added to your cart`,
-          description:
-            "You can view your cart by clicking the cart icon in the top right corner",
+          title: `${name} has been added to your cart`,
           duration: 2000,
         });
       }}
