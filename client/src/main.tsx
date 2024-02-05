@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/verify",
+        path: "/verify/:token",
         element: <Verify />,
       },
     ],
