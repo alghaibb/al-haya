@@ -26,8 +26,7 @@ const AddToCart = ({
   price_id,
 }: ProductCart) => {
   const { toast } = useToast();
-  const { addItem, cartDetails, handleCartClick, removeItem } =
-    useShoppingCart();
+  const { addItem, cartDetails, handleCartClick } = useShoppingCart();
   const [addedToCart, setAddedToCart] = useState(false);
 
   // Helper function to get the URL for a single image
