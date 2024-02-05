@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { useShoppingCart } from "use-shopping-cart";
 import { useToast } from "@/components/ui/use-toast";
 import { urlFor } from "../../sanityClient";
+import { FiCheckCircle } from "react-icons/fi";
+
+import "./addtocart.styles.css";
 
 export interface ProductCart {
   name: string;
@@ -22,7 +26,9 @@ const AddToCart = ({
   price_id,
 }: ProductCart) => {
   const { toast } = useToast();
-  const { addItem } = useShoppingCart();
+  const { addItem, cartDetails, handleCartClick, removeItem } =
+    useShoppingCart();
+  const [addedToCart, setAddedToCart] = useState(false);
 
   // Helper function to get the URL for a single image
   const getImageUrl = (imageData: any) => {
@@ -30,17 +36,14 @@ const AddToCart = ({
       return urlFor(imageData).url();
     } catch (error) {
       console.error("Error generating image URL:", error);
-      return ""; // Replace with a default image URL or handle accordingly
+      return "";
     }
   };
 
-  // Assuming `image` is an array, handle it accordingly
   let imageUrl = "";
   if (Array.isArray(image) && image.length > 0) {
-    // Example: Get the URL of the first image in the array
     imageUrl = getImageUrl(image[0]);
   } else {
-    // If `image` is not an array or is empty, handle accordingly
     console.error("Invalid image data:", image);
   }
 
@@ -53,19 +56,48 @@ const AddToCart = ({
     price_id: price_id,
   };
 
+  useEffect(() => {
+    // Check if the product is already in the cart when the component mounts
+    if (cartDetails?.[price_id]) {
+      // If the product is already in the cart, set addedToCart to true
+      setAddedToCart(true);
+    } else {
+      // If the product is not in the cart, set addedToCart to false
+      setAddedToCart(false);
+    }
+  }, [cartDetails, price_id]);
+
+  // Function to handle adding the product to the cart
+  const handleAddToCart = () => {
+    addItem(product);
+    setAddedToCart(true);
+    toast({
+      title: `${name} has been added to your cart`,
+      duration: 2000,
+    });
+  };
+
   return (
     <Button
       size="lg"
-      className="addToCartBtn"
+      className={`addToCartBtn ${addedToCart ? "addedToCart" : ""}`}
       onClick={() => {
-        addItem(product);
-        toast({
-          title: `${name} has been added to your cart`,
-          duration: 2000,
-        });
+        if (addedToCart) {
+          handleCartClick(); // Clicking "View In Cart" will open the cart
+        } else {
+          // If the item is not in the cart, add it
+          handleAddToCart();
+        }
       }}
     >
-      Add To Cart
+      {addedToCart ? (
+        <div className="viewInCartContainer">
+          <FiCheckCircle className="checkmarkIcon" />
+          View In Cart
+        </div>
+      ) : (
+        "Add To Cart"
+      )}
     </Button>
   );
 };

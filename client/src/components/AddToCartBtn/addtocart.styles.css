@@ -1,0 +1,9 @@
+.checkmarkIcon {
+  margin-right: 0.3rem;
+}
+
+.viewInCartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
