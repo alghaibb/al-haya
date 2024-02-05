@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./verify.styles.css";
 
 const Verify = () => {
