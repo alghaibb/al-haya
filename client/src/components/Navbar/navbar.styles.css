@@ -52,6 +52,28 @@
   transition: color 0.2s ease-in-out;
 }
 
+.loginTooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.loginTooltip p {
+  padding: 0.5rem 1rem;
+  @apply bg-zinc-900 text-zinc-100 rounded-lg;
+}
+
+.cartTooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cartTooltip p {
+  padding: 0.5rem 1rem;
+  @apply bg-zinc-900 text-zinc-100 rounded-lg;
+}
+
 .icon:hover {
   @apply text-zinc-500;
 }
