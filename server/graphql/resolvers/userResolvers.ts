@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 
 import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
+import { sendVerificationEmail } from '../../utils/mailer';
+import { generateVerificationToken } from '../../utils/verificationToken';
 
 class ValidationError extends Error {
   constructor(message: string) {
@@ -62,21 +64,61 @@ const userResolvers = {
       }
 
       try {
+        // Check if the user already exists
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+          throw new Error('User already exists');
+        }
+
+        // Generate a verification token
+        const verificationToken = generateVerificationToken();
+
         const user = new User({
           fullName,
           email,
           password,
+          verificationToken,
+          isVerified: false,
         });
 
         await user.save();
 
+        // Send a verification email
+        await sendVerificationEmail(user.email, verificationToken);
+
         // Create a token using the signToken function
-        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
-        
-        return { user, token };
+        // const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
+        // return { user, token };
+
+        return { message: "Registration successful. Please check your email to verify your account before logging in." };
       } catch (error: any) {
         console.error('Error registering user:', error);
         throw new Error(`Failed to register user: ${error.message}`);
+      }
+    },
+
+    // Verify a user
+    verifyEmail: async (_: any, { verificationToken }: { verificationToken: string }) => {
+      try {
+        const user = await User.findOne({ verificationToken });
+
+        if (!user) {
+          throw new Error('Invalid verification token');
+        }
+
+        if (user.isVerified) {
+          return { message: 'Account already verified. Please log in.' };
+        }
+
+        user.isVerified = true;
+        user.verificationToken = '';
+        await user.save();
+
+        return { message: 'User verified successfully' };
+      } catch (error) {
+        console.error('Error verifying user:', error);
+        throw new Error('Failed to verify user');
       }
     },
 
@@ -104,6 +146,11 @@ const userResolvers = {
           throw new Error('Invalid password');
         }
 
+        // Check if user is verified
+        if (!user.isVerified) {
+          throw new Error('User not verified');
+        }
+
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
@@ -115,6 +162,7 @@ const userResolvers = {
 
         return { user, token };
       } catch (error) {
+        console.error('Error logging in user:', error);
         throw new Error('Failed to login user');
       }
     },

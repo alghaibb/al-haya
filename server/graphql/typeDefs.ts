@@ -7,12 +7,21 @@ const typeDefs = gql`
     fullName: String!
     email: String!
     password: String!
+    isVerified: Boolean!
   }
 
   type AuthPayload {
     token: String!
     user: User!
   }
+
+  type RegistrationResult {
+    message: String!
+  }
+
+  type VerifyEmailResponse {
+    message: String!
+}
 
   input RegisterInput {
     fullName: String!
@@ -32,12 +41,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    register(registerInput: RegisterInput): AuthPayload!
+    register(registerInput: RegisterInput): RegistrationResult!
     login(loginInput: LoginInput): AuthPayload!
     logout(token: String!): String
     updateUser(_id: ID!, fullName: String, password: String): User
     deleteUser(_id: ID!): String
     subscribeToNewsletter(email: String!): String
+    verifyEmail(verificationToken: String!): VerifyEmailResponse
   }
 `;
 

@@ -9,14 +9,9 @@ export const REGISTER_USER = gql`
       password: $password,
       confirmPassword: $confirmPassword
     }) {
-      token
-      user {
-        _id
-        fullName
-        email
+      message
       }
     }
-  }
 `;
 
 // Mutation for user login
@@ -32,6 +27,15 @@ export const LOGIN_USER = gql`
         fullName
         email
       }
+    }
+  }
+`;
+
+// Mutation for verifying user email
+export const VERIFY_EMAIL = gql`
+  mutation verifyEmail($verificationToken: String!) {
+    verifyEmail(verificationToken: $verificationToken) {
+      message
     }
   }
 `;

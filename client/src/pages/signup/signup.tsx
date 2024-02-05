@@ -90,20 +90,20 @@ const Signup = () => {
         },
       });
 
-      if (res.data && res.data.register && res.data.register.token) {
+      if (res.data && res.data.register && res.data.register.message) {
         // Delay the toast message for 3 seconds
         setTimeout(() => {
           // Show a success toast message
           toast({
             title: "Registration Successful",
             description:
-              "You have been successfully registered, redirecting you to the login page...",
+              "You have been successfully registered, please check your email to verify your account",
           });
 
           // Redirect the user to the login page after 2 seconds
-          setTimeout(() => {
-            window.location.href = "/login";
-          }, 2000);
+          // setTimeout(() => {
+          //   window.location.href = "/login";
+          // }, 2000);
         }, 2000);
 
         // Redirect the user to the login page or perform other actions here
