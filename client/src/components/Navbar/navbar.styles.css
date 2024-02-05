@@ -74,6 +74,17 @@
   @apply bg-zinc-900 text-zinc-100 rounded-lg;
 }
 
+.logoutTooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.logoutTooltip p {
+  padding: 0.5rem 1rem;
+  @apply bg-zinc-900 text-zinc-100 rounded-lg;
+}
+
 .icon:hover {
   @apply text-zinc-500;
 }

@@ -50,9 +50,18 @@ const Navbar = () => {
       </div>
       <div className="icons">
         {isLoggedIn ? (
-          <button onClick={handleLogout} className="logoutBtn">
-            <RiLogoutCircleLine className="icon" size={24} />
-          </button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button onClick={handleLogout} className="logoutBtn">
+                  <RiLogoutCircleLine className="icon" size={24} />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent className="logoutTooltip" onClick={handleLogout}>
+                <p>Logout</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ) : (
           <TooltipProvider>
             <Tooltip>
@@ -100,7 +109,7 @@ const Navbar = () => {
                   />
                 </svg>
                 <TooltipContent className="cartTooltip">
-                  <p>Click to view cart</p>
+                  <p>View Cart</p>
                 </TooltipContent>
               </button>
             </TooltipTrigger>
