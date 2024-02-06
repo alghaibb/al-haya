@@ -120,6 +120,40 @@
   .sloganContainer h1 {
     text-align: center;
   }
+
+  .heroImageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .heroImage img,
+  .secondHeroImage img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: cover;
+  }
+
+  .heroImage,
+  .secondHeroImage {
+    left: 0;
+    top: 0;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 2rem;
+  }
+
+  .heroImage {
+    margin-left: 0px;
+  }
+
+  .heroContainer {
+    margin-bottom: 0;
+  }
 }
 
 /* Large media queries */

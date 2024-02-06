@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@apollo/client";
@@ -30,6 +30,8 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [subscribeToNewsletter] = useMutation(SEND_EMAIL);
 
+  const navigate = useNavigate();
+
   const { toast } = useToast();
   const {
     register,
@@ -39,6 +41,17 @@ const Footer = () => {
   } = useForm<Subscription>({
     resolver: zodResolver(subscriptionSchema),
   });
+
+  // Function to handle link click
+  const handleLinkClick = (path: string) => {
+    navigate(path);
+
+    // Scroll to top of the page
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const onSubscribe = async (data: Subscription) => {
     setLoading(true);
@@ -82,31 +95,60 @@ const Footer = () => {
         </div>
         <div className="footer-top-items">
           <h1>Categories</h1>
-          <Link to="/category/women">
+          <Link
+            to="/category/women"
+            onClick={() => handleLinkClick("/category/women")}
+          >
             <span className="category-links">Women</span>
           </Link>
-          <Link to="/category/men">
+          <Link
+            to="/category/men"
+            onClick={() => handleLinkClick("/category/men")}
+          >
             <span className="category-links">Men</span>
           </Link>
-          <Link to="/category/accessories">
+          <Link
+            to="/category/accessories"
+            onClick={() => handleLinkClick("/category/accessories")}
+          >
             <span className="category-links">Accessories</span>
           </Link>
         </div>
         <div className="footer-top-items">
           <h1>About Us</h1>
-          <Link to="/our-story" className="about-us-links">
+          <Link
+            to="/our-story"
+            className="about-us-links"
+            onClick={() => handleLinkClick("/about-us")}
+          >
             <span>Our Story</span>
           </Link>
-          <Link to="/shipping-returns" className="about-us-links">
+          <Link
+            to="/shipping-returns"
+            className="about-us-links"
+            onClick={() => handleLinkClick("/shipping-returns")}
+          >
             <span>Shipping & Returns</span>
           </Link>
-          <Link to="/terms-and-conditions" className="about-us-links">
+          <Link
+            to="/terms-and-conditions"
+            className="about-us-links"
+            onClick={() => handleLinkClick("/terms-and-conditions")}
+          >
             <span>Terms & Conditions</span>
           </Link>
-          <Link to="/privacy-policy" className="about-us-links">
+          <Link
+            to="/privacy-policy"
+            className="about-us-links"
+            onClick={() => handleLinkClick("/privacy-policy")}
+          >
             <span>Privacy Policy</span>
           </Link>
-          <Link to="/contact-us" className="about-us-links">
+          <Link
+            to="/contact-us"
+            className="about-us-links"
+            onClick={() => handleLinkClick("/contact-us")}
+          >
             <span>Contact Us</span>
           </Link>
         </div>
