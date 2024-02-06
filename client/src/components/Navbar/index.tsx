@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { MdFavoriteBorder } from "react-icons/md";
 
 import "./navbar.styles.css";
 
@@ -89,6 +90,19 @@ const Navbar = () => {
             </Tooltip>
           </TooltipProvider>
         )}
+
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/wishlist">
+                <MdFavoriteBorder className="icon" size={24} />
+            <TooltipContent className="wishlistTooltip">
+              <p>Wishlist</p>
+            </TooltipContent>
+              </Link>
+            </TooltipTrigger>
+          </Tooltip>
+        </TooltipProvider>
 
         <TooltipProvider>
           <Tooltip>

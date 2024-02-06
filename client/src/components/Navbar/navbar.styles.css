@@ -85,6 +85,37 @@
   @apply bg-zinc-900 text-zinc-100 rounded-lg;
 }
 
+.wishlistTooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.wishlistTooltip p {
+  padding: 0.5rem 1rem;
+  @apply bg-zinc-900 text-zinc-100 rounded-lg;
+}
+
+.iconBtn {
+  position: relative;
+  display: inline-block;
+}
+
+.countCirlce {
+  position: absolute;
+  top: -10px; /* Adjust as needed */
+  right: -10px; /* Adjust as needed */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
 .icon:hover {
   @apply text-zinc-500;
 }
