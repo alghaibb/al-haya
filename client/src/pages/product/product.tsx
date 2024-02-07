@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import client from "@/sanityClient";
 import { fullProduct } from "@/interface";
 import { useParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 import "./product.styles.css";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import ImageGallery from "@/components/ImageGallery";
 import AddToCart from "@/components/AddToCartBtn";
 import CheckoutNow from "@/components/CheckoutBtn";
+import AddToWishlist from "@/components/AddToWishlistBtn";
 
 export const dynamic = "force-dynamic";
 
@@ -84,9 +84,7 @@ const ProductPage = () => {
               price={productData.price}
               price_id={productData.price_id}
             />
-            <Button variant="outline" size="lg" className="addToWishlistBtn">
-              Add To Wishlist
-            </Button>
+            <AddToWishlist product={productData} />
           </div>
           <div className="orDivider">
             <hr className="dividerLine" />

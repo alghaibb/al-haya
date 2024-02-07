@@ -1,0 +1,4 @@
+.addToWishlistBtn {
+  width: 100%;
+  @apply border border-solid border-zinc-900;
+}
