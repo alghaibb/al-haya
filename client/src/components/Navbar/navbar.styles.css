@@ -125,10 +125,6 @@
     display: none;
   }
 
-  .cartHidden {
-    display: none;
-  }
-
   .logoContainer {
     display: block;
     flex-grow: 1;

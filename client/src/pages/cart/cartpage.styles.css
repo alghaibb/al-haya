@@ -1,0 +1,262 @@
+/* Basic reset for list */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cart page container styles */
+.cartPageContainer {
+  width: 100%;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cartPageTitle {
+  font-size: 2rem;
+  margin-top: 30px;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+/* Styles for the empty cart state */
+.emptyCartContainer {
+  padding: 50px 20px;
+}
+
+.emptyCartContainer p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.emptyCartContainer a {
+  text-decoration: underline;
+  @apply text-zinc-900 underline-offset-4;
+}
+
+.continueBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.continueContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.continueContainer p {
+  max-width: 800px;
+}
+
+.continueContainer h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Styles for the filled cart */
+.filledCartContainer {
+  padding: 20px;
+}
+
+.cartListContainer {
+  margin-bottom: 30px;
+}
+
+.cartListItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.cartListItem:last-child {
+  @apply border-b border-zinc-300;
+}
+
+.cartItemImage {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 1rem;
+}
+
+.cartItemDetails {
+  flex-grow: 1;
+}
+
+.cartItemTitle {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.cartItemRemove {
+  background: none;
+  border: none;
+  color: #ff3300;
+  transition: color 0.2s ease-in-out;
+}
+
+.cartItemRemove:hover {
+  color: #e07878;
+}
+
+/* Total container at the bottom of the cart */
+.cartTotalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.cartTotalTitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.cartTotalPrice {
+  font-size: 1.2rem;
+}
+
+/* Checkout button container */
+.cartCheckoutBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.cartItemsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  @apply border-b border-zinc-300;
+}
+
+.summaryTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Responsive styles if needed */
+@media (max-width: 768px) {
+  .cartPageContainer {
+    padding: 10px;
+  }
+
+  .cartPageTitle {
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+
+  .cartItemTitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .cartListItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cartItemDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .cartTotalContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .cartTotalPrice {
+    margin-top: 10px;
+  }
+
+  .cartItemPrice {
+    margin-top: 10px;
+    order: 3;
+  }
+
+  .cartQuantitySelector {
+    align-items: flex-end;
+    order: 2;
+  }
+
+  .cartItemRemove {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  .cartItemsHeader {
+    display: none;
+  }
+
+  .continueContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .continueContainer h1 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .continueContainer p {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .filledCartContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cartListContainer {
+    flex: 1;
+    margin-right: 40px;
+  }
+
+  .summaryContainer {
+    width: 350px;
+    flex-shrink: 0;
+    margin-left: 40px;
+  }
+
+  .summaryTitle {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .cartPageContainer {
+    max-width: 1440px;
+    margin: 30px auto;
+    padding: 40px;
+  }
+
+  .cartCheckoutBtn {
+    margin-top: 30px;
+  }
+
+  .continueBtn {
+    width: auto;
+    padding: 10px 20px;
+  }
+
+  .continueContainer h1 {
+    margin-right: 20px;
+  }
+
+  .continueContainer p {
+    text-align: center;
+  }
+}
