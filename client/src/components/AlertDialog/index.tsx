@@ -11,6 +11,8 @@ import {
 } from "../../components/ui/alert-dialog";
 import { Button } from "../ui/button";
 
+import "./alertdialog.styles.css";
+
 interface CustomAlertDialogProps {
   title: string;
   description: string;
@@ -25,19 +27,21 @@ const CustomAlertDialog: React.FC<CustomAlertDialogProps> = ({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Clear Cart</Button>
+        <Button variant="outline" className="clearCartBtn">
+          Clear Cart
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+        <AlertDialogFooter className="alertDialogFooter">
           <AlertDialogCancel>
-            <Button>Cancel</Button>
+            <Button className="alertCancelBtn">Cancel</Button>
           </AlertDialogCancel>
           <AlertDialogAction asChild onClick={onConfirm}>
-            <Button>Continue</Button>
+            <Button className="alertContinueBtn">Continue</Button>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

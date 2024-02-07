@@ -1,0 +1,21 @@
+.clearCartBtn {
+  border: 1px solid #000000;
+  margin-left: 20px;
+}
+
+.alertDialogFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .alertDialogFooter {
+    gap: 0.5rem;
+  }
+
+  .alertDialogContainer {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+}
