@@ -13,6 +13,7 @@ import CartProvider from "./components/Providers/Cart";
 import ShoppingCartModal from "./components/ShoppingCartModal";
 import Footer from "./components/Footer";
 import Divider from "./components/Divider";
+import { WishlistProvider } from "./components/Providers/Wishlist";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,16 +44,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <CartProvider>
-        <Navbar />
-        <main className="flex flex-col min-h-screen">
-          <ShoppingCartModal />
-          <Outlet />
-          <Toaster />
-        </main>
-        <Divider />
-        <Footer />
-      </CartProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <Navbar />
+          <main className="flex flex-col min-h-screen">
+            <ShoppingCartModal />
+            <Outlet />
+            <Toaster />
+          </main>
+          <Divider />
+          <Footer />
+        </CartProvider>
+      </WishlistProvider>
     </ApolloProvider>
   );
 }
