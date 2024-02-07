@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Logo from "../../assets/logo.svg";
 import Auth from "@/utils/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useShoppingCart } from "use-shopping-cart";
 
 import { RiLogoutCircleLine } from "react-icons/ri";
@@ -12,6 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { MdFavoriteBorder } from "react-icons/md";
+import { useToast } from "../../components/ui/use-toast";
 
 import "./navbar.styles.css";
 
@@ -27,11 +28,33 @@ const navLinks = [
 
 const Navbar = () => {
   const { handleCartClick } = useShoppingCart();
+  const { toast } = useToast();
   const isLoggedIn = Auth.loggedIn();
+  const navigate = useNavigate();
 
   // Function to log out user
   const handleLogout = () => {
     Auth.logout();
+  };
+
+  // Function to redirect users to login page if they are not logged in when clicking the wishlist icon
+  const handleWishlistClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!isLoggedIn) {
+      toast({
+        title: "Please login",
+        description: "You need to be logged in to view your wishlist",
+        variant: "destructive",
+      });
+
+      // Redirect to login page
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } else {
+      // Redirect to wishlist page
+      navigate("/wishlist");
+    }
   };
 
   return (
@@ -94,12 +117,12 @@ const Navbar = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link to="/wishlist">
+              <button onClick={(e) => handleWishlistClick(e)}>
                 <MdFavoriteBorder className="icon" size={24} />
-            <TooltipContent className="wishlistTooltip">
-              <p>Wishlist</p>
-            </TooltipContent>
-              </Link>
+                <TooltipContent className="wishlistTooltip">
+                  <p>Wishlist</p>
+                </TooltipContent>
+              </button>
             </TooltipTrigger>
           </Tooltip>
         </TooltipProvider>

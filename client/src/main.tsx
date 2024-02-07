@@ -14,6 +14,7 @@ import ErrorStripe from "./pages/stripe/error/error.tsx";
 import SuccessStripe from "./pages/stripe/success/success.tsx";
 import Contact from "./pages/contact/contact.tsx";
 import Verify from "./pages/verify/index.tsx";
+import Wishlist from "./pages/wishlist/wishlist.tsx";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/verify/:token",
         element: <Verify />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
       },
     ],
   },
