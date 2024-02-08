@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, ApolloError } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations/userMutations";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -79,11 +79,25 @@ const Login = () => {
           variant: "destructive",
         });
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Login error:", error);
+
+      // Error message if user is not verified from ApolloError if not default error message
+      let errorMessage = "An error occurred during login. Please try again.";
+
+      if (error instanceof ApolloError && error.graphQLErrors.length > 0) {
+        const graphqlError = error.graphQLErrors[0];
+        if (graphqlError.message.includes("User is not verified")) {
+          errorMessage =
+            "Your account is not verified. Please check your email to verify.";
+        } else {
+          errorMessage = graphqlError.message;
+        }
+      }
+
       toast({
         title: "Login Failed",
-        description: "An error occurred during login. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

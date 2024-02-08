@@ -131,36 +131,31 @@ const userResolvers = {
         throw new Error('Password cannot be empty');
       }
 
-      try {
-        const user = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-        if (!user) {
-          throw new Error('User not found');
-        }
-
-        if (!user.password) {
-          throw new Error('Invalid password');
-        }
-
-        // Check if user is verified
-        if (!user.isVerified) {
-          throw new Error('User not verified');
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-
-        if (!isPasswordValid) {
-          throw new Error('Invalid password');
-        }
-
-        // Create a token using the signToken function
-        const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
-
-        return { user, token };
-      } catch (error) {
-        console.error('Error logging in user:', error);
-        throw new Error('Failed to login user');
+      if (!user) {
+        throw new Error('User not found');
       }
+
+      // Check if user is verified
+      if (!user.isVerified) {
+        throw new Error('User is not verified');
+      }
+
+      if (!user.password) {
+        throw new Error('Incorrect password');
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordValid) {
+        throw new Error('Invalid password');
+      }
+
+      // Create a token using the signToken function
+      const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
+
+      return { user, token };
     },
 
     // Logout a user
