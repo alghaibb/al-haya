@@ -87,10 +87,6 @@ const userResolvers = {
         // Send a verification email
         await sendVerificationEmail(user.email, verificationToken);
 
-        // Create a token using the signToken function
-        // const token = signToken({ _id: user._id.toString(), email: user.email, fullName: user.fullName });
-        // return { user, token };
-
         return { message: "Registration successful. Please check your email to verify your account before logging in." };
       } catch (error: any) {
         console.error('Error registering user:', error);
