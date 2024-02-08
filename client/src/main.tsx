@@ -15,6 +15,7 @@ import SuccessStripe from "./pages/stripe/success/success.tsx";
 import Contact from "./pages/contact/contact.tsx";
 import Verify from "./pages/verify/index.tsx";
 import Wishlist from "./pages/wishlist/wishlist.tsx";
+import AllProductsPage from "./pages/products/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <Wishlist />,
+      },
+      {
+        path: "/products",
+        element: <AllProductsPage />,
       },
     ],
   },

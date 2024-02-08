@@ -1,0 +1,113 @@
+.allProductsPage {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.productsCard {
+  overflow: hidden;
+  position: relative;
+  padding: 1rem;
+}
+
+.productsImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.productsCard,
+.productsImage {
+  border-radius: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.productsCard:hover {
+  transform: scale(1.03);
+}
+
+.productsCard h3 {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  @apply text-zinc-900;
+}
+
+.productsCard p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  @apply text-zinc-900;
+}
+
+.allProductsTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  @apply text-zinc-900;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.paginationDisabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.paginationNext,
+.paginationPrev {
+  cursor: pointer;
+}
+
+.paginationNumbers {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.paginationNumbersActive {
+  pointer-events: none;
+  @apply text-zinc-900;
+  font-weight: bold;
+  text-decoration: underline;
+  @apply underline-offset-auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .productsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .allProductsTitle {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .allProductsPage {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
