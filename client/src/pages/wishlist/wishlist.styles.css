@@ -1,0 +1,257 @@
+/* Basic reset for list */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* wishlist page container styles */
+.wishlistPageContainer {
+  width: 100%;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wishlistPageTitle {
+  font-size: 2rem;
+  margin-top: 30px;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+/* Styles for the empty wishlist state */
+.emptyWishlistContainer {
+  padding: 50px 20px;
+}
+
+.emptyWishlistContainer p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.emptyWishlistContainer a {
+  text-decoration: underline;
+  @apply text-zinc-900 underline-offset-4;
+}
+
+.continueBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.continueContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-swishlist;
+  align-items: flex-swishlist;
+  margin-top: 40px;
+}
+
+.continueContainer p {
+  max-width: 800px;
+}
+
+.continueContainer h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Styles for the filled wishlist */
+.filledWishlistContainer {
+  padding: 20px;
+}
+
+.wishlistListContainer {
+  margin-bottom: 30px;
+}
+
+.wishlistListItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.wishlistListItem:last-child {
+  @apply border-b border-zinc-300;
+}
+
+.wishlistItemImage {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 1rem;
+}
+
+.wishlistItemDetails {
+  flex-grow: 1;
+}
+
+.wishlistItemTitle {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.wishlistItemRemove {
+  background: none;
+  border: none;
+  color: #ff3300;
+  transition: color 0.2s ease-in-out;
+}
+
+.wishlistItemRemove:hover {
+  color: #e07878;
+}
+
+/* Total container at the bottom of the wishlist */
+.wishlistTotalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.wishlistTotalTitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.wishlistTotalPrice {
+  font-size: 1.2rem;
+}
+
+/* Checkout button container */
+.wishlistCheckoutBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.wishlistItemsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  @apply border-b border-zinc-300;
+}
+
+.summaryTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .wishlistPageContainer {
+    padding: 10px;
+  }
+
+  .wishlistPageTitle {
+    margin-top: 20px;
+    font-size: 1.5rem;
+  }
+
+  .wishlistItemTitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .wishlistListItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wishlistItemDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .wishlistTotalContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .wishlistTotalPrice {
+    margin-top: 10px;
+  }
+
+  .wishlistItemPrice {
+    margin-top: 10px;
+    order: 3;
+  }
+
+  .wishlistQuantitySelector {
+    align-items: flex-end;
+    order: 2;
+  }
+
+  .wishlistItemRemove {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  .continueContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .continueContainer h1 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .continueContainer p {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .filledWishlistContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .wishlistListContainer {
+    flex: 1;
+    margin-right: 40px;
+  }
+
+  .summaryContainer {
+    width: 350px;
+    flex-shrink: 0;
+    margin-left: 40px;
+  }
+
+  .summaryTitle {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .wishlistPageContainer {
+    max-width: 1440px;
+    margin: 30px auto;
+    padding: 40px;
+  }
+
+  .wishlistCheckoutBtn {
+    margin-top: 30px;
+  }
+
+  .continueBtn {
+    width: auto;
+    padding: 10px 20px;
+  }
+
+  .continueContainer h1 {
+    margin-right: 20px;
+  }
+
+  .continueContainer p {
+    text-align: center;
+  }
+}

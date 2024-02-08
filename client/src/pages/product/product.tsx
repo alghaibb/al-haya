@@ -84,7 +84,15 @@ const ProductPage = () => {
               price={productData.price}
               price_id={productData.price_id}
             />
-            <AddToWishlist product={productData} />
+            <AddToWishlist
+              currency="AUD"
+              description={productData.description}
+              image={productData.images}
+              name={productData.title}
+              price={productData.price}
+              price_id={productData.price_id}
+              slug={productData.slug}
+            />
           </div>
           <div className="orDivider">
             <hr className="dividerLine" />

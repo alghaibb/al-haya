@@ -138,6 +138,7 @@ const CartPage = () => {
       {isEmpty ? <EmptyCart /> : <FilledCart />}
       {!isEmpty && (
         <AlertDialog
+          btnName="Clear Cart"
           title="Clear the Cart?"
           description="Are you sure you want to remove all items from your cart? This action cannot be undone."
           onConfirm={() => handleClearCart()}
