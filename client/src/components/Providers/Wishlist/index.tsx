@@ -12,7 +12,7 @@ export interface WishlistItem {
   price: number;
   imageUrl: string;
   slug: string;
-  currency?: number;
+  currency?: string;
   description?: string;
 }
 

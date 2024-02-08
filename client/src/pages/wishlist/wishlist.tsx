@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { WishlistContext, WishlistItem } from "@/components/Providers/Wishlist";
+import { WishlistContext } from "@/components/Providers/Wishlist";
 import { useShoppingCart } from "use-shopping-cart";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import AlertDialog from "../../components/AlertDialog";
 
 import "./wishlist.styles.css";
 
-const WishlistPage: React.FC<WishlistItem> = () => {
+const WishlistPage = () => {
   const {
     state: { items },
     dispatch,
