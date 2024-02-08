@@ -2,3 +2,9 @@
   width: 100%;
   @apply border border-solid border-zinc-900;
 }
+
+.viewInWishlistContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

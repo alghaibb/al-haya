@@ -110,8 +110,7 @@
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
   .productActions {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
   }
 
   .checkoutNowBtn {

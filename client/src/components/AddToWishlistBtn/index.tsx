@@ -1,48 +1,109 @@
-import { useContext } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useContext, useState, useEffect } from "react";
 import {
   WishlistContext,
   WishlistContextType,
 } from "../../components/Providers/Wishlist";
 import { Button } from "../../components/ui/button";
-import { fullProduct } from "@/interface";
+import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner";
+import { FiCheckCircle } from "react-icons/fi";
+import { urlFor } from "../../sanityClient";
+
+import "./addtowishlist.styles.css";
 
 interface AddToWishlistProps {
-  product: fullProduct;
+  name: string;
+  description: string;
+  price: number;
+  currency: string;
+  image: any;
+  price_id: string;
+  slug: string;
 }
 
-const AddToWishlist: React.FC<AddToWishlistProps> = ({ product }) => {
-  const { dispatch } = useContext(WishlistContext) as WishlistContextType;
+const AddToWishlist: React.FC<AddToWishlistProps> = ({
+  name,
+  description,
+  price,
+  currency,
+  image,
+  price_id,
+  slug,
+}) => {
+  const { state, dispatch } = useContext(
+    WishlistContext
+  ) as WishlistContextType;
+  const [isAdded, setIsAdded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  if (!dispatch) {
-    throw new Error(
-      "useContext(WishlistContext) must be used within a WishlistProvider'"
+  // Image url from sanity
+  const imageUrl = urlFor(image[0]).url();
+
+  useEffect(() => {
+    // Check if the product is already in the wishlist
+    const isItemInWishlist = state.items.some(
+      (item) => item.price_id === price_id
     );
-  }
+    setIsAdded(isItemInWishlist);
+  }, [state.items, price_id]);
 
-  // Add the product to the wishlist
-  const handleAddToWishlist = () => {
-    const productToAdd = {
-      id: product._id,
-      name: product.title,
-      price: product.price,
-      image: product.images[0],
-      slug: product.slug,
-    };
+  const handleAddToWishlist = async () => {
+    if (isAdded) {
+      // Redirect to the wishlist page
+      navigate("/wishlist");
+      return;
+    }
 
-    dispatch({
-      type: "ADD_ITEM",
-      payload: productToAdd,
-    });
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      const productToAdd = {
+        name,
+        description,
+        price,
+        currency,
+        slug,
+        imageUrl,
+        price_id,
+      };
+
+      console.log("Adding to wishlist:", productToAdd);
+
+      dispatch({
+        type: "ADD_ITEM",
+        payload: productToAdd,
+      });
+
+      setIsAdded(true);
+      toast({
+        title: `${name} added to your wishlist`,
+        duration: 2000,
+      });
+    }, 1000);
   };
 
   return (
     <Button
-      variant="outline"
+      variant="secondary"
       size="lg"
-      className="addToWishlistBtn"
+      className={`addToWishlistBtn ${isAdded ? "addedToWishlist" : ""}`}
       onClick={handleAddToWishlist}
+      disabled={isLoading}
     >
-      Add To Wishlist
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : isAdded ? (
+        <div className="viewInWishlistContainer">
+          <FiCheckCircle className="checkmarkIcon" />
+          <span>View In Wishlist</span>
+        </div>
+      ) : (
+        "Add To Wishlist"
+      )}
     </Button>
   );
 };

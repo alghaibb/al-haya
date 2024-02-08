@@ -7,11 +7,13 @@ import React, {
 } from "react";
 
 export interface WishlistItem {
-  id: string;
+  price_id: string;
   name: string;
   price: number;
-  image: string;
+  imageUrl: string;
   slug: string;
+  currency?: number;
+  description?: string;
 }
 
 export type WishlistAction =
@@ -49,10 +51,15 @@ const wishlistReducer = (
     case "REMOVE_ITEM":
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.payload.id),
+        items: state.items.filter(
+          (item) => item.price_id !== action.payload.id
+        ),
       };
     case "CLEAR":
-      return initialState;
+      return {
+        ...state,
+        items: [],
+      };
     default:
       throw new Error("Unhandled action type");
   }

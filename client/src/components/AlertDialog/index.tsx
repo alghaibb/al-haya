@@ -17,18 +17,20 @@ interface CustomAlertDialogProps {
   title: string;
   description: string;
   onConfirm: () => void;
+  btnName: string;
 }
 
 const CustomAlertDialog: React.FC<CustomAlertDialogProps> = ({
   title,
   description,
   onConfirm,
+  btnName,
 }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline" className="clearCartBtn">
-          Clear Cart
+        <Button variant="outline" className="alertDialogBtn">
+          {btnName}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
