@@ -20,7 +20,7 @@
   padding: 1rem;
 }
 
-.productsImage img {
+.productsImage {
   width: 100%;
   height: auto;
   display: block;
