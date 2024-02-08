@@ -29,15 +29,19 @@
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: none;
+  background-color: transparent;
   border: none;
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
   appearance: textfield;
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+  -webkit-appearance: textfield;
+  outline: none;
+}
+
+.quantitySelector input::-webkit-inner-spin-button,
+.quantitySelector input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
