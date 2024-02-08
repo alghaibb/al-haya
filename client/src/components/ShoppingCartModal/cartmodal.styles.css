@@ -87,12 +87,12 @@
 
 .removeBtn {
   font-weight: 500;
-  @apply text-primary;
+  color: #991b1b;
   transition: color 0.2s ease-in-out;
 }
 
 .removeBtn:hover {
-  @apply text-primary/80;
+  color: #f87171;
 }
 
 .cartFooterContainer {
