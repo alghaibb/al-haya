@@ -99,11 +99,6 @@ const Signup = () => {
             description:
               "You have been successfully registered, please check your email to verify your account",
           });
-
-          // Redirect the user to the login page after 2 seconds
-          // setTimeout(() => {
-          //   window.location.href = "/login";
-          // }, 2000);
         }, 2000);
 
         // Redirect the user to the login page or perform other actions here

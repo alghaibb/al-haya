@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 import client, { urlFor } from "../../sanityClient";
 
 import LoadingSpinner from "../LoadingSpinner";
@@ -20,6 +22,7 @@ interface HeroBanner {
 
 const Hero = () => {
   const [data, setData] = useState<HeroBanner | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +45,11 @@ const Hero = () => {
     ? urlFor(data.secondaryHeroImage.asset).url()
     : "";
 
+  // Function for shop now button to go to /products page using navigate
+  const handleShopNowClick = () => {
+    navigate("/products");
+  };
+
   return (
     <section className="container">
       <div className="heroContainer">
@@ -51,6 +59,9 @@ const Hero = () => {
             Explore our finest collections of islamic attires for both men &
             women
           </p>
+          <Button onClick={handleShopNowClick} className="shopNowBtn">
+            Shop Now
+          </Button>
         </div>
 
         <div className="heroImageContainer">

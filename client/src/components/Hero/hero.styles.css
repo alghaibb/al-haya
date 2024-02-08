@@ -78,6 +78,10 @@
   margin-top: 1.5rem;
 }
 
+.shopNowBtn {
+  margin-top: 1.5rem;
+}
+
 /* Small media queries */
 @media (min-width: 640px) {
   .container {
