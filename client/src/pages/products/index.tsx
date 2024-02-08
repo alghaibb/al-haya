@@ -21,7 +21,9 @@ const ITEMS_PER_PAGE = 12;
 
 const AllProductsPage = () => {
   const [products, setProducts] = useState<simpleProduct[]>([]);
+  const [displayedItems, setDisplayedItems] = useState<simpleProduct[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [opacity, setOpacity] = useState(1);
 
   // Fetch all products
   useEffect(() => {
@@ -45,9 +47,24 @@ const AllProductsPage = () => {
   }, []);
 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
-  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
-  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    // Start by fading out
+    setOpacity(0);
+
+    const timer = setTimeout(() => {
+      // Update the content after the fade-out completes
+      const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
+      const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
+      const newItems = products.slice(indexOfFirstItem, indexOfLastItem);
+      setDisplayedItems(newItems);
+
+      // Fade back in after updating the content
+      setOpacity(1);
+    }, 300); // Wait for the fade-out to complete (300ms)
+
+    return () => clearTimeout(timer);
+  }, [currentPage, products]); // Depend on currentPage and products
 
   // Adjusted handler for previous page
   const handlePreviousClick = (e: any) => {
@@ -71,16 +88,20 @@ const AllProductsPage = () => {
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
   return (
     <div className="allProductsPage">
       <h1 className="allProductsTitle">All Products</h1>
-      <div className="productsGrid">
-        {currentItems.map((product) => (
+      <div
+        className="productsGrid"
+        style={{ "--grid-opacity": opacity } as React.CSSProperties}
+      >
+        {displayedItems.map((product) => (
           <div key={product._id} className="productsCard">
             <Link to={`/product/${product.slug}`}>
               <img src={product.imageUrl} alt={product.title} />
+              <h3>{product.title}</h3>
             </Link>
-            <h3>{product.title}</h3>
             <p>${product.price}</p>
           </div>
         ))}
