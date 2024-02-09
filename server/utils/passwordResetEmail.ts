@@ -28,8 +28,6 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
       <div style="margin: 20px 0;">
         <a href="${resetPasswordUrl}" style="background-color: #000; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 50px; display: inline-block;">Reset Password</a>
       </div>
-      <p>If the button above does not work, paste this link into your browser:</p>
-      <p><a href="${resetPasswordUrl}" style="color: #000;">${resetPasswordUrl}</a></p>
     </div>
    `
   });

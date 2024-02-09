@@ -27,8 +27,6 @@ export const sendVerificationEmail = async (email: string, token: string) => {
       <div style="margin: 20px 0;">
         <a href="${verificationUrl}" style="background-color: #000; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 50px; display: inline-block;">Verify Email</a>
       </div>
-      <p>If the button above does not work, paste this link into your browser:</p>
-      <p><a href="${verificationUrl}" style="color: #000;">${verificationUrl}</a></p>
       <p style="margin-top: 30px; font-size: 0.9em;">If you did not create an account using this email address, please ignore this email.</p>
     </div>
    `
