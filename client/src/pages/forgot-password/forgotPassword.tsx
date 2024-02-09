@@ -109,7 +109,7 @@ const ForgotPassword = () => {
             className="forgotPasswordBtn"
             disabled={loading || showLoader}
           >
-            {showLoader ? <LoadingSpinner /> : "Reset Password"}
+            {showLoader ? <LoadingSpinner /> : "Send Request"}
           </Button>
         </form>
       </Form>

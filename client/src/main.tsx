@@ -17,6 +17,7 @@ import Verify from "./pages/verify/index.tsx";
 import Wishlist from "./pages/wishlist/wishlist.tsx";
 import AllProductsPage from "./pages/products/index.tsx";
 import ForgotPassword from "./pages/forgot-password/forgotPassword.tsx";
+import ResetPassword from "./pages/reset-password/resetPassword.tsx";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/forgot-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/reset-password/:token",
+        element: <ResetPassword />,
       },
     ],
   },
