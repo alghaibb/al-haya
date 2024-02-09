@@ -15,6 +15,12 @@ export default {
       options: {
         hotspot: true
       }
+    },
+    {
+      name: 'subcategories',
+      title: 'Subcategories',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'subcategory' }] }]
     }
   ]
 }
