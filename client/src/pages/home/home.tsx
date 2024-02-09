@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import "./home.styles.css";
 import NewestAdditions from "@/components/NewestAdditions";
 import Divider from "@/components/Divider";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,8 @@ const home = () => {
       <Hero />
       <Divider />
       <NewestAdditions />
+      <Divider />
+      <FeaturedProducts />
     </div>
   );
 };
