@@ -43,12 +43,6 @@ export default {
       to: { type: 'category' }
     },
     {
-      name: 'subcategory',
-      title: 'Product Subcategory',
-      type: 'reference',
-      to: { type: 'subcategory' }
-    },
-    {
       name: 'images',
       title: 'Product Images',
       type: 'array',
