@@ -1,10 +1,10 @@
-.newestAdditions-container {
+.featuredAdditions-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.newestAdditions-title {
+.featuredAdditions-title {
   font-size: 2.5rem;
   font-weight: 700;
   @apply text-zinc-900;
@@ -12,47 +12,40 @@
   margin-bottom: 30px;
 }
 
-.newestAdditions-seeAll {
-  font-size: 1.2rem;
-  font-weight: 700;
-  @apply text-zinc-900;
-  margin-bottom: 30px;
-}
-
-.newestAdditions-grid {
+.featuredAdditions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-.newestAdditions-card {
+.featuredAdditions-card {
   overflow: hidden;
   position: relative;
   border-radius: 8px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.newestAdditions-card:hover {
+.featuredAdditions-card:hover {
   transform: scale(1.03);
 }
 
-.newestAdditions-image {
+.featuredAdditions-image {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 8px;
 }
 
-.newestAdditions-info {
+.featuredAdditions-info {
   text-align: center;
   padding: 10px;
 }
 
-.newestAdditions-product-title {
+.featuredAdditions-product-title {
   margin: 10px 0 5px;
 }
 
-.newestAdditions-product-price {
+.featuredAdditions-product-price {
   @apply text-zinc-900;
   font-weight: bold;
 }
@@ -64,15 +57,10 @@
   max-width: 400px;
   width: 100%;
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
-  .newestAdditions-title {
+  .featuredAdditions-title {
     font-size: 2rem;
-  }
-
-  .seelAllBtn {
-    max-width: 100%;
   }
 }

@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { simpleProduct } from "@/interface";
 import { Link } from "react-router-dom";
 import client from "@/sanityClient";
 
-import { Button } from "../ui/button";
+import "./featured.styles.css";
 
-import "./newest.styles.css";
-
-const NewestAdditions = () => {
+const FeaturedProducts = () => {
   const [products, setProducts] = useState<simpleProduct[]>([]);
 
+  // Fetch the featured products from the Sanity API
   useEffect(() => {
     const fetchData = async () => {
-      const query = `*[_type == 'product'][9...13] | order(_createdAt desc) {
+      const query = `*[_type == 'product'][13...18] {
         _id,
         price,
         title,
@@ -28,22 +27,22 @@ const NewestAdditions = () => {
   }, []);
 
   return (
-    <div className="newestAdditions-container">
-      <h2 className="newestAdditions-title">Our Newest Additions</h2>
-      <div className="newestAdditions-grid">
+    <div className="featuredAdditions-container">
+      <h2 className="featuredAdditions-title">Our Featured Products</h2>
+      <div className="featuredAdditions-grid">
         {products.map((product) => (
-          <div key={product._id} className="newestAdditions-card">
+          <div key={product._id} className="featuredAdditions-card">
             <Link to={`/product/${product.slug}`}>
               <img
                 src={product.imageUrl}
                 alt={product.title}
-                className="newestAdditions-image"
+                className="featuredAdditions-image"
               />
-              <div className="newestAdditions-info">
-                <h3 className="newestAdditions-product-title">
+              <div className="featuredAdditions-info">
+                <h3 className="featuredAdditions-product-title">
                   {product.title}
                 </h3>
-                <p className="newestAdditions-product-price">
+                <p className="featuredAdditions-product-price">
                   ${product.price}
                 </p>
               </div>
@@ -51,13 +50,8 @@ const NewestAdditions = () => {
           </div>
         ))}
       </div>
-      <Link to="/products">
-        <Button size="sm" className="seelAllBtn">
-          See All
-        </Button>
-      </Link>
     </div>
   );
 };
 
-export default NewestAdditions;
+export default FeaturedProducts;
