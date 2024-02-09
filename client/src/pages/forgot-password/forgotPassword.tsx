@@ -4,6 +4,7 @@ import { REQUEST_PASSWORD_RESET } from "../../utils/mutations/userMutations";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 import {
   Form,
@@ -20,6 +21,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { Input } from "@/components/ui/input";
 
 import "./forgotpassword.styles.css";
+import { Link } from "react-router-dom";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -87,6 +89,11 @@ const ForgotPassword = () => {
           onSubmit={form.handleSubmit(handleFormSubmit)}
           className="forgotPasswordForm"
         >
+          <p className="backToLoginLink">
+            <Link to="/login">
+              <MdOutlineKeyboardArrowLeft className="arrowLeft" /> Back to login
+            </Link>
+          </p>
           <FormField
             control={form.control}
             name="email"

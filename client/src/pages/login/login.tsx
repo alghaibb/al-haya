@@ -165,6 +165,12 @@ const Login = () => {
             {showLoader ? <LoadingSpinner /> : "Login"}
           </Button>
           <p>
+            Forgot password?
+            <Link to="/forgot-password">
+              <span>Reset Your Password</span>
+            </Link>
+          </p>
+          <p>
             Don't have an account?
             <Link to="/signup">
               <span>Sign Up</span>
