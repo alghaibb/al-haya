@@ -5,7 +5,8 @@ import mongoose from 'mongoose';
 import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
 import { sendVerificationEmail } from '../../utils/verificationEmail';
-import { generateVerificationToken } from '../../utils/verificationToken';
+import { sendPasswordResetEmail } from '../../utils/passwordResetEmail';
+import { generateToken } from '../../utils/generateTokens';
 
 class ValidationError extends Error {
   constructor(message: string) {
@@ -72,7 +73,7 @@ const userResolvers = {
         }
 
         // Generate a verification token
-        const verificationToken = generateVerificationToken();
+        const verificationToken = generateToken();
 
         const user = new User({
           fullName,
@@ -167,6 +168,54 @@ const userResolvers = {
       } catch (error) {
         console.error('Error logging out user:', error);
         throw new Error('Failed to logout user');
+      }
+    },
+
+    // Resolver function to request password reset
+    requestPasswordReset: async (_: any, { email }: { email: string }) => {
+      try {
+        // Generate a password reset token
+        const token = generateToken();
+
+        // Update user document with token and expiry time
+        await User.findOneAndUpdate({ email }, {
+          passwordResetToken: token,
+          passwordResetTokenExpiry: Date.now() + 3600000, // Token expires in 1 hour
+        });
+
+        // Send password reset email
+        await sendPasswordResetEmail(email, token);
+
+        return { message: 'Password reset email sent successfully' };
+      } catch (error) {
+        console.error('Error requesting password reset:', error);
+        throw new Error('Failed to request password reset');
+      }
+    },
+
+    // Resolver function to reset password
+    resetPassword: async (_: any, { token, newPassword }: { token: string; newPassword: string }) => {
+      try {
+        // Find user by password reset token
+        const user = await User.findOne({
+          passwordResetToken: token,
+          passwordResetTokenExpiry: { $gt: Date.now() }, // Token is not expired
+        });
+
+        if (!user) {
+          throw new Error('Invalid or expired password reset token');
+        }
+
+        // Update user's password and clear password reset token fields
+        user.password = newPassword;
+        user.passwordResetToken = '';
+        user.passwordResetTokenExpiry = undefined;
+        await user.save();
+
+        return { message: 'Password reset successfully' };
+      } catch (error) {
+        console.error('Error resetting password:', error);
+        throw new Error('Failed to reset password');
       }
     },
 

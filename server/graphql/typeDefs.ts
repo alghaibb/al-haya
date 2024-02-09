@@ -21,7 +21,11 @@ const typeDefs = gql`
 
   type VerifyEmailResponse {
     message: String!
-}
+  }
+
+  type ResetPasswordResult {
+    message: String!
+  }
 
   input RegisterInput {
     fullName: String!
@@ -33,6 +37,10 @@ const typeDefs = gql`
   input LoginInput {
     email: String!
     password: String!
+  }
+
+  input ResetPasswordInput {
+    email: String!
   }
 
   type Query {
@@ -48,6 +56,8 @@ const typeDefs = gql`
     deleteUser(_id: ID!): String
     subscribeToNewsletter(email: String!): String
     verifyEmail(verificationToken: String!): VerifyEmailResponse
+    requestPasswordReset(email: String!): ResetPasswordResult!
+    resetPassword(token: String!, newPassword: String!): ResetPasswordResult!
   }
 `;
 
