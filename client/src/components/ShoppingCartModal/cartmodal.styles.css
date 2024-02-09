@@ -43,6 +43,13 @@
   @apply border border-zinc-400/60;
 }
 
+.listItemText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
 .cartProductDetailsContainer {
   display: flex;
   flex-direction: column;
