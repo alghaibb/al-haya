@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import { signToken } from '../../utils/auth';
 import { validateEmail, validateFullName, validatePasswordOnLogin, validatePasswordOnSignup } from '../../utils/userValidators';
-import { sendVerificationEmail } from '../../utils/mailer';
+import { sendVerificationEmail } from '../../utils/verificationEmail';
 import { generateVerificationToken } from '../../utils/verificationToken';
 
 class ValidationError extends Error {
