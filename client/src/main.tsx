@@ -16,6 +16,7 @@ import Contact from "./pages/contact/contact.tsx";
 import Verify from "./pages/verify/index.tsx";
 import Wishlist from "./pages/wishlist/wishlist.tsx";
 import AllProductsPage from "./pages/products/index.tsx";
+import ForgotPassword from "./pages/forgot-password/forgotPassword.tsx";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <AllProductsPage />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
     ],
   },
