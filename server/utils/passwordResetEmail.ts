@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-  const resetPasswordUrl = `http://localhost:3000/reset-password/${token}`;
+  const resetPasswordUrl = `https://al-haya-73td.vercel.app/reset-password/${token}`;
 
   await transporter.sendMail({
     from: `"Al Haya" ${process.env.MAIL_FROM_ADDRESS}`,

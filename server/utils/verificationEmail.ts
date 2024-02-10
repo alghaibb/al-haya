@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const verificationUrl = `http://localhost:3000/verify/${token}`;
+  const verificationUrl = `https://al-haya-73td.vercel.app/verify/${token}`;
 
   await transporter.sendMail({
     from: `"Al Haya" ${process.env.MAIL_FROM_ADDRESS}`,
