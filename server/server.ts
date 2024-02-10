@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {
-  origin: process.env.ORIGIN || "http://localhost:3000",
+  origin: process.env.ORIGIN || "https://al-haya-73td.vercel.app",
   credentials: true,
 }
 
