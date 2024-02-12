@@ -1,0 +1,63 @@
+.termsConditionsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.termsConditionsTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-align: center;
+  @apply text-zinc-900;
+}
+
+.termsContent {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  @apply text-zinc-900;
+}
+
+.termsContent h2 {
+  font-size: 1.5625rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @apply text-zinc-900;
+}
+
+.termsContent p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  @apply text-zinc-900;
+}
+
+.contactUsLink {
+  font-weight: bold;
+  @apply text-zinc-900;
+}
+
+@media (max-width: 768px) {
+  .termsConditionsContainer {
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .termsConditionsTitle {
+    font-size: 1.75rem;
+  }
+
+  .termsContent,
+  .termsContent h2,
+  .termsContent p {
+    font-size: 1rem;
+  }
+}

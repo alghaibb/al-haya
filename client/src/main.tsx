@@ -18,6 +18,10 @@ import Wishlist from "./pages/wishlist/wishlist.tsx";
 import AllProductsPage from "./pages/products/index.tsx";
 import ForgotPassword from "./pages/forgot-password/forgotPassword.tsx";
 import ResetPassword from "./pages/reset-password/resetPassword.tsx";
+import OurStoryPage from "./pages/our-story/ourstory.tsx";
+import ShippingReturnsPage from "./pages/shipping-returns/shippingreturns.tsx";
+import TermsConditionsPage from "./pages/terms-and-conditions/termsconditions.tsx";
+import PrivacyPolicyPage from "./pages/privacy-policy/privacypolicy.tsx";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +83,22 @@ const router = createBrowserRouter([
       {
         path: "/reset-password/:token",
         element: <ResetPassword />,
+      },
+      {
+        path: "/our-story",
+        element: <OurStoryPage />,
+      },
+      {
+        path: "/shipping-returns",
+        element: <ShippingReturnsPage />,
+      },
+      {
+        path: "/terms-and-conditions",
+        element: <TermsConditionsPage />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicyPage />,
       },
     ],
   },
