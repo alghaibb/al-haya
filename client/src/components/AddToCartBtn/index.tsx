@@ -131,10 +131,10 @@ const AddToCart = ({
       ) : addedToCart ? (
         <div className="viewInCartContainer">
           <FiCheckCircle className="checkmarkIcon" />
-          View In Cart
+          View In Bag
         </div>
       ) : (
-        "Add To Cart"
+        "Add To Bag"
       )}
     </Button>
   );

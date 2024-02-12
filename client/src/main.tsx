@@ -22,6 +22,7 @@ import OurStoryPage from "./pages/our-story/ourstory.tsx";
 import ShippingReturnsPage from "./pages/shipping-returns/shippingreturns.tsx";
 import TermsConditionsPage from "./pages/terms-and-conditions/termsconditions.tsx";
 import PrivacyPolicyPage from "./pages/privacy-policy/privacypolicy.tsx";
+import AuthOnlyRoute from "./utils/authOnlyRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +71,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <Wishlist />,
+        element: (
+          <AuthOnlyRoute>
+            <Wishlist />
+          </AuthOnlyRoute>
+        ),
       },
       {
         path: "/products",
