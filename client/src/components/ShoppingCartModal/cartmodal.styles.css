@@ -94,12 +94,12 @@
 
 .removeBtn {
   font-weight: 500;
-  color: #991b1b;
+  @apply text-red-700;
   transition: color 0.2s ease-in-out;
 }
 
 .removeBtn:hover {
-  color: #f87171;
+  @apply text-red-400;
 }
 
 .cartFooterContainer {
