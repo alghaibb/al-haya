@@ -1448,7 +1448,11 @@ const TermsConditionsPage = () => {
         <p>
           In order to resolve a complaint regarding the site or to receive
           further information regarding use of the site,
-          <a href="/contact-us" className="contactUsLink"> click here</a> to contact us.
+          <a href="/contact-us" className="termsContactUsLink">
+            {" "}
+            click here
+          </a>{" "}
+          to contact us.
         </p>
       </div>
     </div>

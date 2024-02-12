@@ -511,7 +511,7 @@ const PrivacyPolicyPage = () => {
               href="https://al-haya-73td.vercel.app/contact-us"
               rel="external nofollow noopener"
               target="_blank"
-              className="contactUsLink"
+              className="termsContactUsLink"
             >
               Click here
             </a>
