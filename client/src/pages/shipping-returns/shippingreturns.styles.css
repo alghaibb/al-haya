@@ -1,0 +1,59 @@
+/* shippingreturns.styles.css */
+.shippingReturnsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.shippingReturnsTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  @apply text-zinc-900;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.shippingPolicy,
+.returnsPolicy {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5625rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @apply text-zinc-900;
+  text-align: left;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #1a202c;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .shippingReturnsContainer {
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .shippingReturnsTitle {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
