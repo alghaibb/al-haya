@@ -116,4 +116,12 @@
     flex-grow: 1;
     width: 100px;
   }
+
+  .wishlistContainer {
+    display: none;
+  }
+
+  .loginTooltip, .cartTooltip {
+    display: none;
+  }
 }
