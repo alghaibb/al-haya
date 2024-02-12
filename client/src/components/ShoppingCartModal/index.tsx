@@ -51,14 +51,14 @@ const ShoppingCartModal = () => {
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sheetContent">
         <SheetHeader>
-          <SheetTitle>Cart</SheetTitle>
+          <SheetTitle>Bag</SheetTitle>
         </SheetHeader>
 
         <div className="sheetDivContainer">
           <div className="sheetDivInnerContainer">
             <ul className="listContainer">
               {cartCount === 0 ? (
-                <h1 className="listItemText">Your cart is empty</h1>
+                <h1 className="listItemText">Your bag is empty</h1>
               ) : (
                 <>
                   {isCartDetailsDefined &&

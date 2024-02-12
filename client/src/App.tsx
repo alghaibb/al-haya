@@ -17,7 +17,7 @@ import { WishlistProvider } from "./components/Providers/Wishlist";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: "https://al-haya-server.onrender.com/graphql",
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT,
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
