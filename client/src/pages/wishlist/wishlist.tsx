@@ -5,9 +5,21 @@ import { WishlistContext } from "@/components/Providers/Wishlist";
 import { useShoppingCart } from "use-shopping-cart";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import { CiTrash } from "react-icons/ci";
+import { FaCartPlus } from "react-icons/fa";
 import AlertDialog from "../../components/AlertDialog";
 
 import "./wishlist.styles.css";
+
+interface WishlistItem {
+  name: string;
+  description: string;
+  price: number;
+  currency: string;
+  imageUrl: string;
+  price_id: string;
+  slug: string;
+}
 
 const WishlistPage = () => {
   const {
@@ -59,6 +71,23 @@ const WishlistPage = () => {
     });
   };
 
+  // Function to add a single item to cart
+  const handleAddToCart = (item: WishlistItem) => {
+    addItem({
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      currency: item.currency?.toLocaleString() || "AUD",
+      image: item.imageUrl,
+      price_id: item.price_id,
+      slug: item.slug,
+    });
+    toast({
+      title: item.name,
+      description: "This item has been added to your cart.",
+    });
+  };
+
   const EmptyWishlist = () => (
     <div className="emptyWishlistContainer">
       <p>
@@ -86,10 +115,24 @@ const WishlistPage = () => {
                 className="wishlistItemRemove"
                 onClick={() => handleRemoveItem(item.price_id, item.name)}
               >
-                Remove
+                <CiTrash size={24} className="wishlistAddItemToCartBtnIcon"/>
+              </button>
+              <button
+                className="wishlistItemAddToCartBtn"
+                onClick={() =>
+                  handleAddToCart({
+                    ...item,
+                    // Ensure description is always a string
+                    description: item.description || "",
+                    // Ensure currency is always a string
+                    currency: item.currency || "",
+                  })
+                }
+              >
+                <FaCartPlus size={24} />
               </button>
             </div>
-            <p className="WishlistItemPrice">${item.price.toFixed(2)}</p>
+            <p className="wishlistItemPrice">${item.price.toFixed(2)}</p>
           </li>
         ))}
       </ul>
