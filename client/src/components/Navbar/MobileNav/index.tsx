@@ -1,19 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useShoppingCart } from "use-shopping-cart";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Squash as Hamburger } from "hamburger-react";
 import { CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
-import { MdOutlineMail } from "react-icons/md";
+import { MdOutlineMail, MdFavoriteBorder } from "react-icons/md";
 
 import "./mobileNav.style.css";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { handleCartClick } = useShoppingCart();
+  const navigate = useNavigate();
 
   // Function to toggle noScroll class on body
   const toggleNoScroll = (shouldScroll: boolean) => {
@@ -37,8 +36,8 @@ const MobileNav = () => {
     }
   });
 
-  const cartClick = () => {
-    handleCartClick();
+  const wishlistClick = () => {
+    navigate("/wishlist");
     setIsOpen(false);
   };
 
@@ -69,34 +68,6 @@ const MobileNav = () => {
         </div>
         <div className={`menuFooterWrapper ${isOpen ? "open" : ""}`}>
           <div className={`menuFooter ${isOpen ? "open" : ""}`}>
-            {/* Contact container */}
-            <Link to="/contact-us" onClick={() => setIsOpen(false)}>
-              <div className="contactUs">
-                <MdOutlineMail className="contactIcon" size={24} />
-                <p className="contactText">Contact Us</p>
-              </div>
-            </Link>
-
-            {/* Shopping bag */}
-            <button onClick={() => cartClick()}>
-              <div className="cartContainer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 cartIcon "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                  />
-                </svg>
-                <p>Cart</p>
-              </div>
-            </button>
             {/* Social media icons */}
             <div className="socialIcons">
               <div className="socialIcon">
@@ -112,6 +83,22 @@ const MobileNav = () => {
                 <p className="socialText">Twitter</p>
               </div>
             </div>
+
+            {/* Wishlist Container*/}
+            <div className="wishlistMobileContainer" onClick={wishlistClick}>
+              <div className="wishlistFlexContainer">
+                <MdFavoriteBorder className="wishlistIcon" size={24} />
+                <p className="wishlistText">Wishlist</p>
+              </div>
+            </div>
+
+            {/* Contact container */}
+            <Link to="/contact-us" onClick={() => setIsOpen(false)}>
+              <div className="contactUs">
+                <MdOutlineMail className="contactIcon" size={24} />
+                <p className="contactText">Contact Us</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

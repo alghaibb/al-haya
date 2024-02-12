@@ -116,7 +116,7 @@ const Navbar = () => {
 
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger asChild>
+            <TooltipTrigger asChild className="wishlistContainer">
               <button onClick={(e) => handleWishlistClick(e)}>
                 <MdFavoriteBorder className="icon" size={24} />
                 <TooltipContent className="wishlistTooltip">
