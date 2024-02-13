@@ -187,25 +187,33 @@ const Signup = () => {
             name="password"
             render={({ field }) => {
               return (
-                <FormItem className="form-item">
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type={showPassword ? "text" : "password"}
-                      disabled={loading || showLoader}
-                    />
-                  </FormControl>
-                  <button
-                    onClick={togglePasswordVisibility}
-                    type="button"
-                    className={showPassword ? "btn-visible" : "btn-hidden"}
-                  >
-                    {/* Replace with an eye/eye-off icon */}
-                    {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                  </button>
-                  <FormMessage />
-                </FormItem>
+                <>
+                  <FormItem className="form-item">
+                    <FormLabel>Password</FormLabel>
+                    <div className="inputWrapper">
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type={showPassword ? "text" : "password"}
+                          disabled={loading || showLoader}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={togglePasswordVisibility}
+                        type="button"
+                        className={showPassword ? "btn-visible" : "btn-hidden"}
+                      >
+                        {/* Replace with an eye/eye-off icon */}
+                        {showPassword ? (
+                          <EyeOutlined />
+                        ) : (
+                          <EyeInvisibleOutlined />
+                        )}
+                      </button>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                </>
               );
             }}
           ></FormField>

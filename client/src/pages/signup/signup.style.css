@@ -29,36 +29,18 @@
   text-decoration: underline;
 }
 
-.error-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: red;
-  font-size: 0.8rem;
-}
-
-.form-item {
-  position: relative;
-}
-
-.form-item button {
-  position: absolute;
-  right: 10px;
-  top: 55%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-  outline: none;
-}
-
 .btn-hidden {
   color: #a1a1aa;
 }
 
 .btn-visible {
   color: #27272a;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 @media screen and (max-width: 768px) {
